@@ -31,9 +31,12 @@ still draft, not built out.
   Knowledge?, Rising Voices, WikiConference India Kochi 2026, Open
   Knowledge Initiatives IIIT Hyderabad, and Jhatkaa as in-partnership-with)
   — to be added to §6 Organizations once that section is built.
-- Not yet done: GitHub repo created/pushed, DNS pointed at GitHub Pages,
-  full multi-section site (this landing page is a placeholder ahead of the
-  full 11-section build below).
+- Repo created and pushed: `github.com/OpenSpeaks/archivingthepresent`
+  (public), GitHub Pages enabled (`main`, `/docs`), live at
+  `https://openspeaks.github.io/archivingthepresent/` pending DNS.
+  Not yet done: DNS for `archivingthepresent.cc` pointed at GitHub Pages
+  (registrar-side step), full multi-section site (this landing page is a
+  placeholder ahead of the full 11-section build below).
 
 Related context already on file, not repeated in full here:
 - `~/HANDOFFS/openspeaks-writing-style.md` — book production state (title,
