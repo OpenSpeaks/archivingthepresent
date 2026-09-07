@@ -34,10 +34,10 @@
   body{
     background-color: var(--paper);
     background-image:
-      linear-gradient(rgba(248, 245, 235, 0.1), rgba(248, 245, 235, 0.1)),
-      url("assets/paper-tile.jpg");
+      linear-gradient(rgba(248, 245, 235, 0.22), rgba(248, 245, 235, 0.22)),
+      url("assets/paper-texture.jpg");
     background-repeat: no-repeat, repeat;
-    background-size: cover, 640px auto;
+    background-size: cover, 1024px 1024px;
     color: var(--ink-dark);
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
@@ -440,6 +440,12 @@
     gap: 0.7rem;
     padding: 5vh 5vw 7vh;
     text-align: center;
+    background: rgba(228, 225, 211, 0.75);
+    border-top: 1px solid rgba(43,38,32,0.14);
+  }
+
+  .colophon-credit a{
+    color: inherit;
   }
 
   .wordmark{
@@ -680,23 +686,147 @@
       <h2 class="book-title">News</h2>
       <p class="book-lead">Coverage of the network and its launch at WikiConference India, Kochi.</p>
 
-      <ul class="funders">
-        <li>
-          <h4>&ldquo;<a href="https://diff.wikimedia.org/2026/09/02/archiving-the-present-a-network-for-south-asias-oral-knowledge-launches-in-kochi-before-wikiconference-india/" target="_blank" rel="noopener">Archiving the Present, a network for South Asia&rsquo;s oral knowledge launches in Kochi before WikiConference India</a>&rdquo;</h4>
-          <p>Wikimedia Diff, 2 September 2026</p>
-        </li>
-        <li>
-          <h4>&ldquo;<a href="https://creativecommons.org/2026/08/12/announcing-four-regional-events-for-ccs-25th-anniversary/" target="_blank" rel="noopener">Announcing Four Regional Events for CC&rsquo;s 25th Anniversary</a>&rdquo;</h4>
-          <p>Creative Commons, 12 August 2026</p>
-        </li>
-      </ul>
+      <script class="bibtex-input" id="news-bibtex" type="application/x-bibtex">
+@online{diff2026archiving,
+  title        = {Archiving the Present, a network for South Asia's oral knowledge launches in Kochi before WikiConference India},
+  organization = {Wikimedia Diff},
+  date         = {2026-09-02},
+  url          = {https://diff.wikimedia.org/2026/09/02/archiving-the-present-a-network-for-south-asias-oral-knowledge-launches-in-kochi-before-wikiconference-india/}
+}
+@online{cc2026regional,
+  title        = {Announcing Four Regional Events for CC's 25th Anniversary},
+  organization = {Creative Commons},
+  date         = {2026-08-12},
+  url          = {https://creativecommons.org/2026/08/12/announcing-four-regional-events-for-ccs-25th-anniversary/}
+}
+      </script>
+      <div class="bibtex-section-output" id="news-output"></div>
     </div>
   </section>
 
   <footer>
     <img class="wordmark" src="assets/wordmark-red.png" alt="Archiving the Present">
     <span class="domain">archivingthepresent.cc</span>
-    <p class="colophon-credit">Cover artwork by Siddhesh Gautam, based on a letterpress print by House of Press. Site managed by OpenSpeaks.</p>
+    <p class="colophon-credit">Cover artwork by Siddhesh Gautam, letterpress print by House of Press. Unless otherwise mentioned, site content under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY SA 4.0</a>.</p>
   </footer>
+
+  <script>
+  // Minimal BibTeX parser + renderer for the News section. Entries are kept
+  // in BibTeX (source of truth, and future-proofed for a "copy as BibTeX"
+  // button) but rendered as a quoted, linked title + "Outlet, DD Month YYYY"
+  // line, matching how press mentions already read on this page. The `note`
+  // field is deliberately left unrendered — reserved for internal-only
+  // context on an entry, not shown on the page.
+  (function () {
+    'use strict';
+
+    function parseFields(body) {
+      const result = {};
+      let i = 0;
+      while (i < body.length) {
+        while (i < body.length && /[\s,]/.test(body[i])) i++;
+        if (i >= body.length) break;
+        const nameStart = i;
+        while (i < body.length && body[i] !== '=') i++;
+        const name = body.slice(nameStart, i).trim().toLowerCase();
+        i++;
+        while (i < body.length && /\s/.test(body[i])) i++;
+        if (i >= body.length) break;
+        let value = '';
+        if (body[i] === '{') {
+          let depth = 0, start = i, content = '';
+          while (i < body.length) {
+            const ch = body[i];
+            if (ch === '{') { depth++; if (depth > 1) content += ch; }
+            else if (ch === '}') { depth--; if (depth === 0) { i++; break; } content += ch; }
+            else content += ch;
+            i++;
+          }
+          value = content;
+        } else {
+          const s = i;
+          while (i < body.length && body[i] !== ',') i++;
+          value = body.slice(s, i).trim();
+        }
+        if (name) result[name] = value.replace(/\s+/g, ' ').trim();
+      }
+      return result;
+    }
+
+    function parseBibtex(src) {
+      const entries = [];
+      const entryRe = /@(\w+)\s*\{\s*([^,\s]+)\s*,/gi;
+      let m;
+      while ((m = entryRe.exec(src)) !== null) {
+        const type = m[1].toLowerCase();
+        const start = m.index + m[0].length;
+        let depth = 1, pos = start;
+        while (pos < src.length && depth > 0) {
+          if (src[pos] === '{') depth++;
+          else if (src[pos] === '}') depth--;
+          pos++;
+        }
+        entries.push({ type, ...parseFields(src.slice(start, pos - 1)) });
+        entryRe.lastIndex = pos;
+      }
+      return entries;
+    }
+
+    function esc(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    function formatDate(entry) {
+      if (entry.date) {
+        const parts = entry.date.split('-').map(Number);
+        if (parts.length === 3) return `${parts[2]} ${MONTHS[parts[1] - 1]} ${parts[0]}`;
+        if (parts.length === 2) return `${MONTHS[parts[1] - 1]} ${parts[0]}`;
+        if (parts.length === 1) return String(parts[0]);
+      }
+      return entry.year || '';
+    }
+
+    function renderEntry(entry) {
+      const outlet = entry.organization || entry.journal || '';
+      const dateText = formatDate(entry);
+      const title = entry.title || '(Untitled)';
+
+      let titleHtml;
+      let idLine = '';
+      if (entry.url) {
+        titleHtml = `<a href="${esc(entry.url)}" target="_blank" rel="noopener">${esc(title)}</a>`;
+      } else if (entry.doi) {
+        titleHtml = esc(title);
+        idLine = ` &middot; <a href="https://dx.doi.org/${esc(entry.doi)}" target="_blank" rel="noopener">doi:${esc(entry.doi)}</a>`;
+      } else {
+        titleHtml = esc(title);
+        if (entry.isbn) idLine = ` &middot; ISBN ${esc(entry.isbn)}`;
+        else if (entry.issn) idLine = ` &middot; ISSN ${esc(entry.issn)}`;
+      }
+
+      const metaLine = [outlet, dateText].filter(Boolean).join(', ');
+      return `<li><h4>&ldquo;${titleHtml}&rdquo;</h4><p>${esc(metaLine)}${idLine}</p></li>`;
+    }
+
+    document.querySelectorAll('script.bibtex-input[type="application/x-bibtex"]').forEach(scriptEl => {
+      let output = scriptEl.nextElementSibling;
+      while (output && !output.classList.contains('bibtex-section-output')) output = output.nextElementSibling;
+      if (!output) return;
+
+      const raw = scriptEl.textContent.trim();
+      if (!raw) { output.innerHTML = ''; return; }
+
+      try {
+        const entries = parseBibtex(raw).sort((a, b) => (b.date || String(b.year || '')).localeCompare(a.date || String(a.year || '')));
+        output.innerHTML = `<ul class="funders">${entries.map(renderEntry).join('')}</ul>`;
+      } catch (err) {
+        console.error('[bibtex] parse error:', err);
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
