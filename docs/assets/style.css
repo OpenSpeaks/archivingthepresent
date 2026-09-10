@@ -619,7 +619,7 @@
     line-height: 1.5;
     text-align: left;
     max-width: 62ch;
-    margin: 0 auto 1.6rem;
+    margin: 0 0 1.6rem;
   }
 
   .lang-note{
@@ -694,7 +694,7 @@
   .citation-block{
     max-width: 640px;
     margin: 0 auto;
-    padding-top: 1.6rem;
+    padding: 1.6rem 0 0;
     border-top: 1px solid rgba(43,38,32,0.16);
   }
 
