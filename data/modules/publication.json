@@ -1,0 +1,25 @@
+{
+  "id": "atp-m-000006",
+  "slug": "publication",
+  "title": {
+    "en": "Publication"
+  },
+  "authors": [
+    "Eddie Avila",
+    "Mithilesh Baraily",
+    "Mariana Fossatti"
+  ],
+  "base_target": "https://archivingthepresent.cc/#module-06",
+  "variants": {
+    "en": {
+      "target": "https://archivingthepresent.cc/#module-06",
+      "formats": {
+        "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
+      }
+    }
+  },
+  "record_status": "active",
+  "superseded_by": null,
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09"
+}

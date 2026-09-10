@@ -1,0 +1,26 @@
+{
+  "id": "atp-m-000002",
+  "slug": "consent-ethics-and-payment",
+  "title": {
+    "en": "Consent, ethics and payment"
+  },
+  "authors": [
+    "Taukeer Alam",
+    "Anju Gagrai",
+    "Opino Gomango",
+    "Puthiya Purayil Sneha"
+  ],
+  "base_target": "https://archivingthepresent.cc/#module-02",
+  "variants": {
+    "en": {
+      "target": "https://archivingthepresent.cc/#module-02",
+      "formats": {
+        "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
+      }
+    }
+  },
+  "record_status": "active",
+  "superseded_by": null,
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09"
+}
