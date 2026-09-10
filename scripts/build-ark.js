@@ -12,17 +12,22 @@
 // nothing - fill in the JSON record as real files/pages become available
 // and rerun this script; it never invalidates identifiers already handed out.
 //
-// N2T resolver behavior, per RegistryofTypeDesign/scripts/build.js: a
-// registered NAAN's resolver rule forwards ark:<NAAN>/<name> to a literal
-// `ark:/<NAAN>/<name>` path on the site (colon included), and N2T strips
-// hyphens from <name> before forwarding (ARK spec: hyphens are structural,
-// not significant). RTD confirmed that by resolving a bare name through
-// n2t.net and inspecting the redirect chain (2026-08-05) - it has NOT been
-// confirmed here for a *qualified* name (base + /en/pdf), since Archiving
-// the Present has no NAAN yet. Once one is assigned and this NAAN constant
-// below is filled in, resolve a qualified ARK through n2t.net and check
-// whether hyphens are stripped from the qualifier portion too, the same
-// way, before trusting the qualified redirect paths this script writes.
+// N2T resolver behavior - do NOT assume this matches RegistryofTypeDesign's
+// pattern; it doesn't. RTD's registered rule forwards to a literal
+// `ark:/<NAAN>/<name>` path (colon then SLASH then NAAN) - confirmed by
+// tracing n2t.net's own redirect chain for RTD's NAAN 54728. Tracing the
+// same chain for THIS NAAN (86534) on 10 Sep 2026 found a different literal
+// path: `ark:<NAAN>/<name>` - colon directly followed by the NAAN digits,
+// NO slash between them. Two NAANs, two different registered resolver
+// rules; the form's own description cannot be trusted for either, and
+// resolver rules aren't necessarily consistent across NAANs even under the
+// same registrant (O Foundation) - always re-trace
+// `curl -sD - -L https://n2t.net/ark:<NAAN>/<name>` per NAAN rather than
+// assuming. N2T does strip hyphens from <name> before forwarding (ARK spec:
+// hyphens are structural, not significant) - confirmed for a bare name on
+// both NAANs; NOT independently confirmed for a *qualified* name (base +
+// /en/pdf) on 86534 - re-check that against the live resolver before
+// trusting the qualified redirect paths this script writes as final.
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -85,7 +90,7 @@ function writeServiceStatus() {
 `;
   writeFile("ark/servicestatus/index.html", html);
   if (ARK_NAAN) {
-    writeFile(`ark:/${ARK_NAAN}/servicestatus/index.html`, html);
+    writeFile(`ark:${ARK_NAAN}/servicestatus/index.html`, html);
   }
 }
 
@@ -103,7 +108,7 @@ function build() {
     if (record.base_target) {
       writeRedirect(
         `ark/${record.id}`,
-        `ark:/${ARK_NAAN}/${content}`,
+        `ark:${ARK_NAAN}/${content}`,
         title,
         record.base_target
       );
@@ -116,7 +121,7 @@ function build() {
       if (variant.target) {
         writeRedirect(
           `ark/${record.id}/${lang}`,
-          `ark:/${ARK_NAAN}/${content}/${lang}`,
+          `ark:${ARK_NAAN}/${content}/${lang}`,
           `${title} (${lang})`,
           variant.target
         );
@@ -129,7 +134,7 @@ function build() {
         if (target) {
           writeRedirect(
             `ark/${record.id}/${lang}/${format}`,
-            `ark:/${ARK_NAAN}/${content}/${lang}/${format}`,
+            `ark:${ARK_NAAN}/${content}/${lang}/${format}`,
             `${title} (${lang}, ${format})`,
             target
           );
