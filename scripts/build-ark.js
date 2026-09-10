@@ -2,32 +2,21 @@
 // Generates ARK redirect stubs into docs/ (the GitHub Pages publish root)
 // from data/modules/*.json.
 //
-// Qualifier convention, agreed for this project:
-//   ark:/NAAN/module-01           -> landing page for the module (base_target)
-//   ark:/NAAN/module-01/en        -> English text (variants.en.target)
-//   ark:/NAAN/module-01/hi        -> Hindi text (variants.hi.target)
-//   ark:/NAAN/module-01/en/pdf    -> English PDF (variants.en.formats.pdf)
-//   ark:/NAAN/module-01/en/audio  -> English audio (variants.en.formats.audio)
-// A qualifier with no target set is skipped rather than redirected to
-// nothing - fill in the JSON record as real files/pages become available
-// and rerun this script; it never invalidates identifiers already handed out.
+// Qualifier convention:
+//   ark:NAAN/module-01           -> landing page for the module (base_target)
+//   ark:NAAN/module-01/en        -> English text (variants.en.target)
+//   ark:NAAN/module-01/hi        -> Hindi text (variants.hi.target)
+//   ark:NAAN/module-01/en/pdf    -> English PDF (variants.en.formats.pdf)
+//   ark:NAAN/module-01/en/audio  -> English audio (variants.en.formats.audio)
+// A qualifier with no target is skipped, not redirected to nothing. Fill in
+// the JSON record and rerun; existing identifiers keep resolving.
 //
-// N2T resolver behavior - do NOT assume this matches RegistryofTypeDesign's
-// pattern; it doesn't. RTD's registered rule forwards to a literal
-// `ark:/<NAAN>/<name>` path (colon then SLASH then NAAN) - confirmed by
-// tracing n2t.net's own redirect chain for RTD's NAAN 54728. Tracing the
-// same chain for THIS NAAN (86534) on 10 Sep 2026 found a different literal
-// path: `ark:<NAAN>/<name>` - colon directly followed by the NAAN digits,
-// NO slash between them. Two NAANs, two different registered resolver
-// rules; the form's own description cannot be trusted for either, and
-// resolver rules aren't necessarily consistent across NAANs even under the
-// same registrant (O Foundation) - always re-trace
-// `curl -sD - -L https://n2t.net/ark:<NAAN>/<name>` per NAAN rather than
-// assuming. N2T does strip hyphens from <name> before forwarding (ARK spec:
-// hyphens are structural, not significant) - confirmed for a bare name on
-// both NAANs; NOT independently confirmed for a *qualified* name (base +
-// /en/pdf) on 86534 - re-check that against the live resolver before
-// trusting the qualified redirect paths this script writes as final.
+// N2T's resolver rule for NAAN 86534 is ark:<NAAN>/<name>, no slash after
+// the colon. RegistryofTypeDesign's NAAN 54728 uses ark:/<NAAN>/<name>, with
+// a slash. Don't assume one NAAN's rule for another - verify with
+// curl -sD - -L https://n2t.net/ark:<NAAN>/<name>. Hyphens are stripped from
+// <name>, confirmed for bare names on both NAANs; not yet checked for a
+// qualified name (base + /en/pdf) on 86534.
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
