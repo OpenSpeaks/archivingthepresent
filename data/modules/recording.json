@@ -8,10 +8,10 @@
     "Pius Akumbu",
     "Amrit Sufi"
   ],
-  "base_target": "https://archivingthepresent.cc/#module-03",
+  "base_target": "https://archivingthepresent.cc/manual/module-03/",
   "variants": {
     "en": {
-      "target": "https://archivingthepresent.cc/#module-03",
+      "target": "https://archivingthepresent.cc/manual/module-03/",
       "formats": {
         "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
       }
@@ -20,5 +20,5 @@
   "record_status": "active",
   "superseded_by": null,
   "created_at": "2026-09-09",
-  "updated_at": "2026-09-09"
+  "updated_at": "2026-09-10"
 }

@@ -7,10 +7,10 @@
   "authors": [
     "Mandana Seyfeddinipur"
   ],
-  "base_target": "https://archivingthepresent.cc/#module-08",
+  "base_target": "https://archivingthepresent.cc/manual/module-08/",
   "variants": {
     "en": {
-      "target": "https://archivingthepresent.cc/#module-08",
+      "target": "https://archivingthepresent.cc/manual/module-08/",
       "formats": {
         "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
       }
@@ -19,5 +19,5 @@
   "record_status": "active",
   "superseded_by": null,
   "created_at": "2026-09-09",
-  "updated_at": "2026-09-09"
+  "updated_at": "2026-09-10"
 }
