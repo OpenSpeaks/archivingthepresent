@@ -1,0 +1,25 @@
+{
+  "id": "atp-m-000007",
+  "slug": "archiving-the-present-language-storytelling-and-languages-that-live",
+  "title": {
+    "en": "Archiving the present: language, storytelling, and languages that live"
+  },
+  "authors": [
+    "Smita Khator",
+    "Ritu Sharma",
+    "Sanjib Chaudhary"
+  ],
+  "base_target": "https://archivingthepresent.cc/#module-07",
+  "variants": {
+    "en": {
+      "target": "https://archivingthepresent.cc/#module-07",
+      "formats": {
+        "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
+      }
+    }
+  },
+  "record_status": "active",
+  "superseded_by": null,
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09"
+}

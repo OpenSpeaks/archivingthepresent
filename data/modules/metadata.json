@@ -1,0 +1,25 @@
+{
+  "id": "atp-m-000005",
+  "slug": "metadata",
+  "title": {
+    "en": "Metadata"
+  },
+  "authors": [
+    "Yulha Lhawa",
+    "Abu Sayeed",
+    "Subhashish Panigrahi"
+  ],
+  "base_target": "https://archivingthepresent.cc/#module-05",
+  "variants": {
+    "en": {
+      "target": "https://archivingthepresent.cc/#module-05",
+      "formats": {
+        "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
+      }
+    }
+  },
+  "record_status": "active",
+  "superseded_by": null,
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09"
+}

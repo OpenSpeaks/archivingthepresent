@@ -1,0 +1,11 @@
+{
+  "name": "archivingthepresent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Archiving the Present network site and ARK identifier records for its modules and materials.",
+  "type": "module",
+  "scripts": {
+    "mint": "node scripts/mint-id.js",
+    "build:ark": "node scripts/build-ark.js"
+  }
+}

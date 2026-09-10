@@ -1,0 +1,25 @@
+{
+  "id": "atp-m-000004",
+  "slug": "file-managing-editing",
+  "title": {
+    "en": "File managing + editing"
+  },
+  "authors": [
+    "Deepak Kumar Beshra",
+    "Amrit Sufi",
+    "Subhashish Panigrahi"
+  ],
+  "base_target": "https://archivingthepresent.cc/#module-04",
+  "variants": {
+    "en": {
+      "target": "https://archivingthepresent.cc/#module-04",
+      "formats": {
+        "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
+      }
+    }
+  },
+  "record_status": "active",
+  "superseded_by": null,
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09"
+}
