@@ -543,6 +543,11 @@
     margin: 0 0 2rem;
   }
 
+  /* Module page header block (breadcrumb through ARK) shares one left
+     edge with the title and body text below it, instead of each piece
+     independently centering against the full column width. */
+  .module-page .breadcrumb{ text-align: left; }
+
   .breadcrumb:hover{ color: var(--ink-red); }
 
   .modules.linked li{
@@ -569,13 +574,15 @@
     margin: -1.2rem 0 0.4rem;
   }
 
-  .module-page .book-title{ margin-bottom: 0.3rem; }
+  .module-page .module-meta{ text-align: left; }
+
+  .module-page .book-title{ text-align: left; margin-bottom: 0.3rem; }
 
   .module-page .by{
     display: block;
     font-size: 0.92rem;
     color: var(--ink-blue);
-    text-align: center;
+    text-align: left;
     margin: 0 0 2rem;
   }
 
@@ -593,7 +600,7 @@
     line-height: 1.5;
     color: var(--ink-dark-soft);
     max-width: 62ch;
-    margin: 0 auto 2.6rem;
+    margin: 0 0 2.6rem;
   }
 
   #manual-full .book-lead{
@@ -624,6 +631,11 @@
     color: var(--ink-dark-soft);
     text-align: center;
     margin: 0 0 2rem;
+  }
+
+  .module-page .ark-permalink{
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .ark-permalink code{
