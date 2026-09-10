@@ -1,5 +1,6 @@
   :root{
     --paper: #bdbaa1;
+    --ivory: #f7f4ea;
     --ink-red: #7a1b1b;
     --ink-blue: #12395c;
     --ink-dark: #2b2620;
@@ -35,6 +36,14 @@
     background-size: cover, 1024px 1024px;
     color: var(--ink-dark);
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  /* Reading pages (module text, citations) get a flat, lighter ivory
+     background instead of the textured paper - that texture suits the
+     home page's hero treatment, not a page meant to be read at length. */
+  body.module-page{
+    background-color: var(--ivory);
+    background-image: none;
   }
 
   /* ---- base element typography ----
@@ -543,9 +552,10 @@
     margin: 0 0 2rem;
   }
 
-  /* Module page header block (breadcrumb through ARK) shares one left
-     edge with the title and body text below it, instead of each piece
-     independently centering against the full column width. */
+  /* Module page header: the breadcrumb + "Module 0X" label sit left,
+     matching the page-margin edge of the body text below. The title,
+     byline, and ARK stay centered (their normal site-wide alignment) as
+     a masthead in between the two left-aligned bands. */
   .module-page .breadcrumb{ text-align: left; }
 
   .breadcrumb:hover{ color: var(--ink-red); }
@@ -578,7 +588,7 @@
 
   .module-page .book-title{ text-align: left; margin-bottom: 0.3rem; }
 
-  .module-page .by{
+  .module-page .section-inner > .by{
     display: block;
     font-size: 0.92rem;
     color: var(--ink-blue);
@@ -618,6 +628,10 @@
     text-align: center;
     margin: 0 0 2.4rem;
   }
+
+  .module-page .lang-note{ text-align: left; }
+
+  .module-page .cta-row{ justify-content: flex-start; }
 
   /* ---- ARK permalink + copy/download controls ---- */
 
@@ -684,6 +698,8 @@
     border-top: 1px solid rgba(43,38,32,0.16);
   }
 
+  .module-page .citation-block{ margin: 0; }
+
   .citation-heading{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
@@ -695,6 +711,8 @@
     margin: 0 0 1rem;
   }
 
+  .module-page .citation-heading{ text-align: left; }
+
   .citation-controls{
     display: flex;
     flex-wrap: wrap;
@@ -703,6 +721,8 @@
     gap: 0.6rem;
     margin: 0 0 0.9rem;
   }
+
+  .module-page .citation-controls{ justify-content: flex-start; }
 
   .citation-style{
     font-family: "Inter", sans-serif;
