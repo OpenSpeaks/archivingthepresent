@@ -635,6 +635,46 @@
     margin-bottom: 2.6rem;
   }
 
+  /* Bullet lists (e.g. "Line length and reading speed") in the same
+     serif reading voice as the surrounding paragraphs - nothing sets
+     ul/li anywhere else on the site, so without this they'd fall back
+     to plain sans-serif browser defaults mid-passage. */
+  .module-page .appendix-excerpt ul{
+    font-family: var(--font-serif);
+    font-size: 1.08rem;
+    line-height: 1.5;
+    color: var(--ink-dark-soft);
+    max-width: 62ch;
+    margin: 0 0 1.4rem;
+    padding-left: 1.3rem;
+  }
+
+  .module-page .appendix-excerpt li{
+    margin: 0 0 0.4rem;
+  }
+
+  .module-page .appendix-excerpt li:last-child{
+    margin-bottom: 0;
+  }
+
+  /* Multi-line SRT/subtitle examples - same monospace treatment as
+     the citation block's .citation-text, scaled to this narrower
+     reading column. */
+  .module-page .appendix-excerpt pre.srt-example{
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--ink-dark-soft);
+    background: rgba(255, 253, 246, 0.7);
+    border: 1px solid rgba(43,38,32,0.16);
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+    margin: 0 0 1.4rem;
+    max-width: 62ch;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
   #manual-full .book-lead{
     font-family: var(--font-serif);
     font-size: 1.02rem;

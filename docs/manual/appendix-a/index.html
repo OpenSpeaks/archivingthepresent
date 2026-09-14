@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&family=Source+Serif+4:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css?v=7">
+<link rel="stylesheet" href="/assets/style.css?v=8">
 </head>
 <body class="module-page">
   <nav class="tabs">
@@ -38,6 +38,57 @@
         <p><strong>Accuracy.</strong> Write what you hear: captions should match the spoken words exactly, including slang and informal language, if that is how the speaker actually talks. If a speaker uses words from a different language, set those words in <em>italics</em>.</p>
         <p><strong>Timing and format.</strong> Keep each line to around 30&ndash;35 characters so it stays easy to read; break a long sentence across two lines, or into two or three meaningful parts, rather than cramming it onto one line. "We are keeping the crops in a closed bin in winter," for example, reads better split as "We are keeping the crops" and "in a closed bin in winter." Never show more than two lines of text on screen at once. Time each caption to appear when the speaker begins and disappear when they stop, and keep it on screen long enough to read comfortably, between three and seven seconds. Where a sentence is long, break it where the speaker naturally pauses, never in the middle of a phrase.</p>
         <p><strong>Giving background.</strong> Use brackets for sounds that matter to the story, for example, <code>(DRUMMING)</code> or <code>(LAUGHING)</code>. When more than one person is speaking, name the speaker at the start of their line; if a full name is long, shorten it to a first name plus a surname initial, "Surendra S.P." rather than "Surendra Singh Pangtey," and note the full name separately in the recording's description text.</p>
+
+        <h4>A.2 Subtitling</h4>
+        <p>This subtitle convention is based on the BBC Subtitle Guidelines (Version 1.2.5, March 2026), itself based on the EBU-TT-D standard. It covers multilingual interviews, where an interviewer and interviewee speak different languages or switch between languages within the same recording.</p>
+        <p><strong>File format.</strong> Use the SRT (.srt) or VTT format for subtitles. Wikimedia Commons uses TimedText, which is close enough to SRT that you can open your SRT file in a plain text editor and copy its contents straight into TimedText. Each subtitle block needs a sequential index number, a timecode in the format <code>HH:MM:SS,mmm --&gt; HH:MM:SS,mmm</code>, one or two lines of subtitle text, and a blank line separating it from the next block:</p>
+        <pre class="srt-example">1
+00:00:01,292 --&gt; 00:00:02,001
+Your name?
+
+2
+00:00:02,210 --&gt; 00:00:03,086
+Sukra Dhangdamajhi</pre>
+        <p><strong>Language layers.</strong> Subtitle each recording in at least two layers: the source language, the primary language spoken, transcribed as closely as possible, including code-switches (see "Code-switching" below); and a translation language, a more widely spoken language the source subtitles are translated into. Keep each layer as its own SRT file, named <code>LanguageCode-RecordingID-LayerLanguageCode.srt</code> &mdash; for example, <code>Bfw-Munaremo-SukraDhangdamajhi.or.srt</code> for the Odia (or) layer of a Bonda (Bfw) recording. Use the ISO 639 code for languages that have one; for languages without an assigned code, use the Glottolog code or the language's full name. Dialects are not usually captured separately in subtitles.</p>
+        <p><strong>Identifying speakers.</strong> The first time each speaker appears in a subtitle block, name them in full, on a separate line above their speech, followed by a colon and a line break. After that, only repeat their name when the speaker changes, or after a gap of 30 seconds or more:</p>
+        <pre class="srt-example">1
+00:00:01,292 --&gt; 00:00:02,001
+GOBARDHAN PANDA:
+Your name?
+
+2
+00:00:02,210 --&gt; 00:00:03,086
+SUKRA DHANGDAMAJHI:
+Sukra Dhangdamajhi</pre>
+        <p><strong>Off-screen speakers.</strong> When you can hear a speaker but they are not visible on screen, put a single quote before and after their speech, for example, <code>'What all do you do?'</code>. If the off-screen speech runs across several lines, keep one quote at the very start and one at the very end.</p>
+        <p><strong>Inaudible speech.</strong> When speech cannot be heard, explain why, in capital letters if you are writing in Latin script: <code>POURS WATER INTO GLASS. INAUDIBLE SPEECH.</code></p>
+        <p><strong>Whispering.</strong> Label whispered speech the first time it occurs, <code>WHISPERS: I knew it.</code> and drop the label afterwards if the whispering continues. For a long whispered subtitle, put brackets around the whole line instead: <code>(We often pickled raw mangoes in summer and ate throughout the year.)</code></p>
+        <p><strong>Code-switching.</strong> Code-switching is when a speaker shifts from one language to another within the same speech, whether mid-sentence or across part of a recording; it is common wherever interviewers and interviewees share a language other than the one being documented. Name the language in capital letters where the switch happens:</p>
+        <pre class="srt-example">IN NEPALI: Our worship rituals are known to the elders.</pre>
+        <p>For a switch mid-line, mark it inline in angle brackets at the point it happens:</p>
+        <pre class="srt-example">We speak Raji, {NEPALI}, during our worship rituals</pre>
+        <p>Use a line break once the speaker returns to the primary language. Name the speaker, the first time they appear, alongside the language tag if an off-screen speaker code-switches:</p>
+        <pre class="srt-example">UDAY AALEY: And in which places {NEPALI} do you use the Raji language?</pre>
+        <p>Only mark a genuine language switch this way, not a single loanword, a place or a person's name.</p>
+        <p><strong>Hesitations, fillers, and overlapping speech.</strong> Keep meaningful hesitations, such as "Hmm..." or "Okay...", but do not transcribe every filler if one recurs often. Too many on-screen makes a subtitle unreadable.</p>
+        <p><strong>Indigenous and community-specific terms.</strong> Where a term has no real translation into another language, keep the original word, and set it in capital letters to mark it apart from the rest of the subtitle: <code>I am the DISARI of this village.</code></p>
+        <p><strong>Line length and reading speed.</strong> Recommended:</p>
+        <ul>
+          <li>Maximum two lines per subtitle.</li>
+          <li>Maximum 42 characters per line, including spaces.</li>
+          <li>Minimum display duration: one second.</li>
+          <li>Target reading speed: 160&ndash;180 words per minute for a general audience; allow more time for recordings with technical, cultural, or Indigenous vocabulary.</li>
+        </ul>
+        <p>Break lines at a natural pause, especially where a sentence must split mid-way &mdash; for example, "We built this small house" and "to keep our domestic animals."</p>
+        <p><strong>Metadata for each subtitle file.</strong> Recording this alongside each SRT file makes the collection usable later. For Wikimedia Commons, add it to the file's own information page. Keep:</p>
+        <ul>
+          <li><strong>Primary language</strong>: the language spoken, with its ISO code.</li>
+          <li><strong>Subtitle language</strong>: the language of this particular SRT file.</li>
+          <li><strong>Speaker(s) and interviewer(s)</strong>: full names, where possible.</li>
+          <li><strong>Subtitler(s)</strong>: full names and method, for example, "transcribed from Bonda by X; translated to Odia by Y; English translation and Odia editing by Z."</li>
+          <li>Code-switch language(s), if any, with their codes.</li>
+          <li><strong>Notes</strong>: anything else worth recording, including any departure from this convention.</li>
+        </ul>
       </div>
 
       <div class="cta-row">
@@ -71,6 +122,6 @@
     <p class="colophon-credit">Cover artwork by Siddhesh Gautam, letterpress print by House of Press. Unless otherwise mentioned, site content under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY SA 4.0</a>.</p>
   </footer>
 
-  <script src="/assets/interactions.js?v=7" defer></script>
+  <script src="/assets/interactions.js?v=8" defer></script>
 </body>
 </html>
