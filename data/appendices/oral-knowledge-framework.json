@@ -1,0 +1,25 @@
+{
+  "id": "atp-a-000002",
+  "slug": "oral-knowledge-framework",
+  "title": {
+    "en": "Oral Knowledge Framework"
+  },
+  "authors": [
+    "Subhashish Panigrahi",
+    "Opino Gomango",
+    "Kimmi Pal"
+  ],
+  "base_target": "https://archivingthepresent.cc/manual/appendix-b/",
+  "variants": {
+    "en": {
+      "target": "https://archivingthepresent.cc/manual/appendix-b/",
+      "formats": {
+        "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
+      }
+    }
+  },
+  "record_status": "active",
+  "superseded_by": null,
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14"
+}

@@ -7,6 +7,7 @@ import { join } from "node:path";
 
 export const KIND_CONFIG = {
   module: { dir: "data/modules", prefix: "atp-m-" },
+  appendix: { dir: "data/appendices", prefix: "atp-a-" },
 };
 
 export function slugify(name) {

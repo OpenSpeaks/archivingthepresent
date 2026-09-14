@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Generates ARK redirect stubs into docs/ (the GitHub Pages publish root)
-// from data/modules/*.json.
+// from data/modules/*.json and data/appendices/*.json.
 //
 // Qualifier convention:
 //   ark:NAAN/module-01           -> landing page for the module (base_target)
@@ -84,13 +84,16 @@ function writeServiceStatus() {
 }
 
 function build() {
-  const modules = listRecords(join(repoRoot, "data/modules"));
+  const records = [
+    ...listRecords(join(repoRoot, "data/modules")),
+    ...listRecords(join(repoRoot, "data/appendices")),
+  ];
   let written = 0;
   let skipped = 0;
 
   writeServiceStatus();
 
-  for (const record of modules) {
+  for (const record of records) {
     const title = record.title?.en ?? record.id;
     const content = record.id.replaceAll("-", "");
 

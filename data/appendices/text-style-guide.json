@@ -1,0 +1,23 @@
+{
+  "id": "atp-a-000001",
+  "slug": "text-style-guide",
+  "title": {
+    "en": "Text Style Guide"
+  },
+  "authors": [
+    "OpenSpeaks"
+  ],
+  "base_target": "https://archivingthepresent.cc/manual/appendix-a/",
+  "variants": {
+    "en": {
+      "target": "https://archivingthepresent.cc/manual/appendix-a/",
+      "formats": {
+        "pdf": "https://archivingthepresent.cc/assets/Archiving-the-Present.pdf"
+      }
+    }
+  },
+  "record_status": "active",
+  "superseded_by": null,
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14"
+}
