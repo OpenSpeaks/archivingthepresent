@@ -1,0 +1,3 @@
+# Code of Conduct
+
+This project welcomes contributions from anyone, regardless of background, language, or experience level. Be respectful in issues, pull requests, and any other discussion here. Disagree with ideas, not people, and assume good faith. Harassment, discriminatory language, or personal attacks of any kind are not tolerated. If you experience or witness behaviour that doesn't meet this standard, report it by opening a GitHub issue or contacting the maintainers directly through the project's GitHub page. Reports will be handled privately, and violations may result in removal from the project's spaces.
