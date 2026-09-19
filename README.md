@@ -1,1 +1,3 @@
 Archiving the Present is a network for supporting people and organisations documenting and archiving languages. It is also the name of a manual and a courseware that was created in September 2026 during its launch. The manual is under a CC BY-SA 4.0 license and was launched at the opening ceremony of WikiConference India 2026. The network, the manual and the courseware were the outcome of a 3.5-month-long workshop series organised by OpenSpeaks in collaboration with ten other collaborators. OpenSpeaks is hosted by the O Foundation.
+
+This repository serves the content of the website https://archivingthepresent.cc. The code is under the MIT License, and the content is under a CC BY-SA 4.0 licence.
