@@ -1,7 +1,3 @@
-This repository contains two different kinds of material, licensed separately.
-
-Code (site templates, scripts, and build tooling) is released under the MIT License:
-
 MIT License
 
 Copyright (c) 2026 O Foundation
@@ -23,10 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Text, illustrations, and the manual itself (everything under "The Book"/
-"Manual" section, including the downloadable PDF) are released under
-Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0):
-https://creativecommons.org/licenses/by-sa/4.0/
