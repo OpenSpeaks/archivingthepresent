@@ -639,7 +639,8 @@
      serif reading voice as the surrounding paragraphs - nothing sets
      ul/li anywhere else on the site, so without this they'd fall back
      to plain sans-serif browser defaults mid-passage. */
-  .module-page .appendix-excerpt ul{
+  .module-page .appendix-excerpt ul,
+  .module-page .appendix-excerpt ol{
     font-family: var(--font-serif);
     font-size: 1.08rem;
     line-height: 1.5;
@@ -647,6 +648,65 @@
     max-width: 62ch;
     margin: 0 0 1.4rem;
     padding-left: 1.3rem;
+  }
+
+  /* Appendix B has a third heading level ("Before you record", "Role-
+     specific checklists") under its B.1-B.5 subsections. */
+  .module-page .appendix-excerpt h5{
+    font-size: 0.85rem;
+    margin: 1.8rem 0 0.6rem;
+  }
+
+  /* Appendix B's compensation-rate table - same quiet, footnote-tier
+     treatment the printed book gives it, not a boxed insert. */
+  .module-page .appendix-excerpt table.rate-table{
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--ink-dark-soft);
+    border-collapse: collapse;
+    width: 100%;
+    max-width: calc(62ch * 1.08 / 0.85);
+    margin: 0 0 1.4rem;
+  }
+
+  .module-page .appendix-excerpt .rate-table th,
+  .module-page .appendix-excerpt .rate-table td{
+    text-align: left;
+    vertical-align: top;
+    padding: 0.45rem 0.8rem 0.45rem 0;
+    border-bottom: 1px solid rgba(43,38,32,0.16);
+  }
+
+  .module-page .appendix-excerpt .rate-table thead th{
+    font-weight: 600;
+    border-bottom-color: rgba(43,38,32,0.5);
+  }
+
+  .module-page .appendix-excerpt .rate-table tbody th{
+    font-weight: 400;
+  }
+
+  /* End-of-appendix notes, matching the printed book's endnotes. */
+  .module-page sup{
+    line-height: 0;
+  }
+
+  .module-page sup a{
+    color: var(--ink-red);
+    padding: 0 0.1em;
+  }
+
+  .module-page .appendix-excerpt ol.footnotes{
+    font-size: 0.85rem;
+    max-width: calc(62ch * 1.08 / 0.85);
+    border-top: 1px solid rgba(43,38,32,0.3);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    overflow-wrap: anywhere;
+  }
+
+  .module-page .appendix-excerpt ol.footnotes a{
+    color: var(--ink-blue);
   }
 
   .module-page .appendix-excerpt li{
