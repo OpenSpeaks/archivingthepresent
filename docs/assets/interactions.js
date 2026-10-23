@@ -37,3 +37,53 @@ document.querySelectorAll(".citation-block").forEach(function (block) {
     URL.revokeObjectURL(url);
   });
 });
+
+document.querySelectorAll("[data-toc]").forEach(function (scope) {
+  var headings = Array.prototype.slice.call(scope.querySelectorAll("h2, h3, h4"));
+  if (headings.length < 2) return;
+
+  var top = +headings[0].tagName[1];
+  var nav = document.createElement("nav");
+  nav.className = "page-toc";
+  nav.setAttribute("aria-labelledby", "page-toc-title");
+  nav.innerHTML = '<p class="page-toc-title" id="page-toc-title">On this page</p><ol></ol>';
+  var list = nav.querySelector("ol");
+  var links = [];
+
+  headings.forEach(function (h) {
+    if (!h.id) {
+      var slug = h.textContent.trim().toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu, "-").replace(/^-|-$/g, "") || "section";
+      var id = slug, n = 2;
+      while (document.getElementById(id)) id = slug + "-" + n++;
+      h.id = id;
+    }
+    var li = document.createElement("li");
+    li.className = "page-toc-level-" + Math.max(1, +h.tagName[1] - top + 1);
+    var a = document.createElement("a");
+    a.href = "#" + h.id;
+    a.textContent = h.textContent.trim();
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  scope.parentNode.insertBefore(nav, scope);
+
+  var offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+  var ticking = false;
+  function mark() {
+    ticking = false;
+    var current = 0;
+    headings.forEach(function (h, i) {
+      if (h.getBoundingClientRect().top <= offset + 24) current = i;
+    });
+    links.forEach(function (a, i) {
+      if (i === current) a.setAttribute("aria-current", "location");
+      else a.removeAttribute("aria-current");
+    });
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(mark); }
+  }, { passive: true });
+  mark();
+});

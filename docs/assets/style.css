@@ -1,11 +1,13 @@
   :root{
-    --paper: #bdbaa1;
-    --ivory: #f7f4ea;
+    --paper: #fbf9ef;
+    --ivory: #fcfbf4;
     --ink-red: #7a1b1b;
     --ink-blue: #12395c;
     --ink-dark: #2b2620;
     --ink-dark-soft: #4a4238;
-    --nav-h: 56px;
+    --nav-h: 40px;
+    /* Reading measure: under 80 characters a line (WCAG 1.4.8). */
+    --measure: 76ch;
     /* Matches the printed book's own body-text spec (Source Serif 4
        Regular, 1.5x leading) - used for manual/module reading text
        only, not UI chrome. Georgia/Times as system-serif fallback if
@@ -30,7 +32,7 @@
   body{
     background-color: var(--paper);
     background-image:
-      linear-gradient(rgba(248, 245, 235, 0.22), rgba(248, 245, 235, 0.22)),
+      linear-gradient(rgba(251, 249, 239, 0.9), rgba(251, 249, 239, 0.9)),
       url("paper-texture.jpg");
     background-repeat: no-repeat, repeat;
     background-size: cover, 1024px 1024px;
@@ -86,7 +88,7 @@
     font-size: 0.9rem;
     line-height: 1.5;
     color: var(--ink-dark-soft);
-    max-width: 56ch;
+    max-width: var(--measure);
     margin: 0 0 1rem;
   }
 
@@ -113,27 +115,30 @@
     height: var(--nav-h);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: safe center;
     gap: 1.6rem;
-    background: rgba(228, 225, 211, 0.88);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-bottom: 1px solid rgba(43,38,32,0.14);
+    overflow-x: auto;
+    background: #1f5fbf;
   }
 
   .tabs a{
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     letter-spacing: 0.02em;
-    color: var(--ink-dark-soft);
+    color: #ffffff;
     text-decoration: none;
-    padding: 0.4rem 0.2rem;
+    padding: 0.3rem 0.2rem;
     border-bottom: 2px solid transparent;
   }
 
   .tabs a:hover{
-    color: var(--ink-red);
+    border-bottom-color: #ffffff;
+  }
+
+  .tabs a:focus-visible{
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
   }
 
   /* ---- shared section layout ---- */
@@ -143,7 +148,7 @@
   }
 
   .section-inner{
-    max-width: 640px;
+    max-width: 760px;
     margin: 0 auto;
   }
 
@@ -187,7 +192,7 @@
   }
   .dot.red   { width: 14px; height: 14px; background: var(--ink-red); }
   .dot.blue  { width: 10px; height: 10px; background: var(--ink-blue); }
-  .dot.cream { width: 9px;  height: 9px;  background: #f4f1e6; border: 1px solid rgba(43,38,32,0.15); }
+  .dot.cream { width: 9px;  height: 9px;  background: #f3f0e7; border: 1px solid rgba(43,38,32,0.15); }
 
   .dot-a { top: -10px; right: 14%; }
   .dot-b { top: 6%; right: 5%; }
@@ -252,7 +257,7 @@
 
   .cta-btn.primary{
     background: var(--ink-red);
-    color: #f8f5eb;
+    color: #f7f4ec;
   }
 
   .cta-btn.primary:hover{
@@ -272,7 +277,7 @@
   /* ---- manual section ---- */
 
   #manual, #network{
-    background: rgba(244, 241, 230, 0.62);
+    background: rgba(243, 240, 231, 0.62);
     border-top: 1px solid rgba(43,38,32,0.14);
     border-bottom: 1px solid rgba(43,38,32,0.14);
   }
@@ -291,7 +296,7 @@
     line-height: 1.6;
     color: var(--ink-dark-soft);
     text-align: center;
-    max-width: 52ch;
+    max-width: 64ch;
     margin: -2.2rem auto 3rem;
   }
 
@@ -347,7 +352,7 @@
     line-height: 1.5;
     color: var(--ink-dark-soft);
     margin: 0;
-    max-width: 56ch;
+    max-width: var(--measure);
   }
 
   .book-extra{
@@ -355,12 +360,12 @@
     line-height: 1.6;
     color: var(--ink-dark-soft);
     text-align: left;
-    max-width: 56ch;
+    max-width: var(--measure);
     margin: 0 0 3rem;
   }
 
   .colophon{
-    background: rgba(255, 253, 246, 0.7);
+    background: rgba(254, 252, 247, 0.7);
     border: 1px solid rgba(43,38,32,0.16);
     border-radius: 4px;
     padding: 1.6rem 1.8rem;
@@ -434,14 +439,14 @@
     line-height: 1.5;
     color: var(--ink-dark-soft);
     margin: 0;
-    max-width: 56ch;
+    max-width: var(--measure);
   }
 
   .org-intro{
     font-size: 0.9rem;
     line-height: 1.5;
     color: var(--ink-dark-soft);
-    max-width: 56ch;
+    max-width: var(--measure);
     margin: 0 0 1.2rem;
   }
 
@@ -480,7 +485,7 @@
     line-height: 1.5;
     color: var(--ink-dark-soft);
     margin: 0;
-    max-width: 56ch;
+    max-width: var(--measure);
   }
 
   .source-note{
@@ -500,7 +505,7 @@
     gap: 0.7rem;
     padding: 5vh 5vw 7vh;
     text-align: center;
-    background: rgba(228, 225, 211, 0.75);
+    background: rgba(226, 224, 213, 0.75);
     border-top: 1px solid rgba(43,38,32,0.14);
   }
 
@@ -531,7 +536,13 @@
   }
 
   @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
     .card{ animation: none; }
+  }
+
+  @media (max-width: 480px){
+    .tabs{ gap: 0.6rem; }
+    .tabs a{ font-size: 0.8rem; letter-spacing: 0; }
   }
 
   @media (max-width: 420px){
@@ -604,12 +615,13 @@
     max-width: 760px;
   }
 
+
   .module-page .first-para{
     font-family: var(--font-serif);
     font-size: 1.08rem;
     line-height: 1.5;
     color: var(--ink-dark-soft);
-    max-width: 62ch;
+    max-width: var(--measure);
     margin: 0 0 2.6rem;
   }
 
@@ -623,11 +635,12 @@
   }
 
   .module-page .appendix-excerpt p{
+    overflow-wrap: break-word;
     font-family: var(--font-serif);
     font-size: 1.08rem;
     line-height: 1.5;
     color: var(--ink-dark-soft);
-    max-width: 62ch;
+    max-width: var(--measure);
     margin: 0 0 1.4rem;
   }
 
@@ -645,7 +658,7 @@
     font-size: 1.08rem;
     line-height: 1.5;
     color: var(--ink-dark-soft);
-    max-width: 62ch;
+    max-width: var(--measure);
     margin: 0 0 1.4rem;
     padding-left: 1.3rem;
   }
@@ -665,7 +678,7 @@
     color: var(--ink-dark-soft);
     border-collapse: collapse;
     width: 100%;
-    max-width: calc(62ch * 1.08 / 0.85);
+    max-width: calc(var(--measure) * 1.08 / 0.85);
     margin: 0 0 1.4rem;
   }
 
@@ -698,7 +711,7 @@
 
   .module-page .appendix-excerpt ol.footnotes{
     font-size: 0.85rem;
-    max-width: calc(62ch * 1.08 / 0.85);
+    max-width: calc(var(--measure) * 1.08 / 0.85);
     border-top: 1px solid rgba(43,38,32,0.3);
     padding-top: 1rem;
     margin-top: 2rem;
@@ -725,12 +738,12 @@
     font-size: 0.85rem;
     line-height: 1.5;
     color: var(--ink-dark-soft);
-    background: rgba(255, 253, 246, 0.7);
+    background: rgba(254, 252, 247, 0.7);
     border: 1px solid rgba(43,38,32,0.16);
     border-radius: 4px;
     padding: 0.85rem 1rem;
     margin: 0 0 1.4rem;
-    max-width: 62ch;
+    max-width: var(--measure);
     white-space: pre-wrap;
     word-break: break-word;
   }
@@ -740,7 +753,7 @@
     font-size: 1.02rem;
     line-height: 1.5;
     text-align: left;
-    max-width: 62ch;
+    max-width: var(--measure);
     margin: 0 0 1.6rem;
   }
 
@@ -814,7 +827,7 @@
   /* ---- citation block (module pages) ---- */
 
   .citation-block{
-    max-width: 640px;
+    max-width: 760px;
     margin: 0 auto;
     padding: 1.6rem 0 0;
     border-top: 1px solid rgba(43,38,32,0.16);
@@ -850,7 +863,7 @@
     font-family: "Inter", sans-serif;
     font-size: 0.85rem;
     color: var(--ink-dark);
-    background: rgba(255, 253, 246, 0.7);
+    background: rgba(254, 252, 247, 0.7);
     border: 1px solid rgba(43,38,32,0.25);
     border-radius: 3px;
     padding: 0.35rem 0.5rem;
@@ -881,7 +894,7 @@
     font-size: 0.8rem;
     line-height: 1.5;
     color: var(--ink-dark-soft);
-    background: rgba(255, 253, 246, 0.7);
+    background: rgba(254, 252, 247, 0.7);
     border: 1px solid rgba(43,38,32,0.16);
     border-radius: 4px;
     padding: 0.85rem 1rem;
@@ -889,3 +902,66 @@
     white-space: pre-wrap;
     word-break: break-word;
   }
+
+  /* Floating contents list, built by interactions.js on any element with
+     data-toc. Shown only where the window has room beside the 760px column.
+     Urbanist, as in the theofdn.org film infobox. */
+  .page-toc{ display: none; }
+
+  @media (min-width: 1280px){
+    .page-toc{
+      display: block;
+      position: fixed;
+      top: calc(var(--nav-h) + 2rem);
+      left: calc(50% + 380px + 2.5rem);
+      width: calc(50% - 380px - 4rem);
+      max-width: 15rem;
+      max-height: calc(100vh - var(--nav-h) - 4rem);
+      overflow-y: auto;
+      font-family: "Urbanist", system-ui, sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+  }
+
+  .page-toc-title{
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink-dark);
+    margin: 0 0 0.6rem;
+  }
+
+  .page-toc ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid rgba(43,38,32,0.25);
+  }
+
+  .page-toc li{ margin: 0; }
+  .page-toc .page-toc-level-2 a{ padding-left: 1.6rem; }
+  .page-toc .page-toc-level-3 a{ padding-left: 2.4rem; }
+
+  .page-toc a{
+    display: block;
+    min-height: 24px;
+    padding: 0.25rem 0 0.25rem 0.8rem;
+    margin-left: -1px;
+    border-left: 3px solid transparent;
+    color: var(--ink-dark-soft);
+    text-decoration: none;
+  }
+
+  .page-toc a:hover{ color: var(--ink-blue); text-decoration: underline; }
+
+  .page-toc a:focus-visible{
+    outline: 2px solid var(--ink-blue);
+    outline-offset: 2px;
+  }
+
+  .page-toc a[aria-current]{
+    color: var(--ink-blue);
+    font-weight: 600;
+    border-left-color: var(--ink-blue);
+  }
+
