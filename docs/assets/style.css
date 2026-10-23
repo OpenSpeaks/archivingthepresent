@@ -1,6 +1,7 @@
   :root{
-    --paper: #fbf9ef;
-    --ivory: #fcfbf4;
+    --paper: #f6f2ea;
+    --ivory: #f6f2ea;
+    --charcoal: #2b2a28;
     --ink-red: #7a1b1b;
     --ink-blue: #12395c;
     --ink-dark: #2b2620;
@@ -31,11 +32,10 @@
 
   body{
     background-color: var(--paper);
-    background-image:
-      linear-gradient(rgba(251, 249, 239, 0.9), rgba(251, 249, 239, 0.9)),
-      url("paper-texture.jpg");
-    background-repeat: no-repeat, repeat;
-    background-size: cover, 1024px 1024px;
+    /* Grey grain, multiplied over the paper colour so it never tints it. */
+    background-image: url("paper-texture.jpg");
+    background-size: 1024px 1024px;
+    background-blend-mode: multiply;
     color: var(--ink-dark);
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
@@ -505,8 +505,13 @@
     gap: 0.7rem;
     padding: 5vh 5vw 7vh;
     text-align: center;
-    background: rgba(226, 224, 213, 0.75);
-    border-top: 1px solid rgba(43,38,32,0.14);
+    background: var(--charcoal);
+    color: var(--paper);
+  }
+
+  footer a:focus-visible{
+    outline: 2px solid var(--paper);
+    outline-offset: 2px;
   }
 
   .colophon-credit a{
@@ -524,13 +529,12 @@
     font-weight: 600;
     font-size: 0.82rem;
     letter-spacing: 0.03em;
-    color: var(--ink-dark-soft);
   }
 
   .colophon-credit{
     font-size: 0.78rem;
     line-height: 1.6;
-    color: var(--ink-dark-soft);
+    color: inherit;
     max-width: 44ch;
     margin: 0;
   }
