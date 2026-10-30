@@ -636,14 +636,72 @@
     .card{ animation: none; }
   }
 
+  .menu-button{ display: none; }
+
+  /* No-script fallback: the nav scrolls sideways. */
   @media (max-width: 480px){
-    :root{ --masthead-tall: 156px; --masthead-short: 104px; --tab-h: 40px; }
+    :root{ --masthead-tall: 156px; --tab-h: 40px; }
     .masthead{ padding-top: 22px; }
     .masthead-logo img{ width: 200px; }
-    html.scrolled .masthead{ padding-top: 16px; }
-    html.scrolled .masthead-logo img{ width: 100px; }
     .tabs{ margin-left: -0.6rem; }
     .tabs a{ padding: 0 0.6rem; font-size: 0.8rem; letter-spacing: 0; }
+  }
+
+  /* Phones and narrow windows get a menu button instead */
+  @media (max-width: 680px){
+    html.js{ --masthead-tall: 120px; --masthead-short: 64px; }
+    html.js .masthead,
+    html.js.scrolled .masthead{
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0;
+    }
+    html.js .masthead-logo{ align-self: center; }
+    html.js .masthead-logo img{ width: 200px; }
+    html.js.scrolled .masthead-logo img{ width: 100px; }
+
+    html.js .menu-button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      margin-right: -12px;
+      padding: 0;
+      border: 0;
+      border-radius: 3px;
+      background: none;
+      color: var(--print-blue);
+      cursor: pointer;
+    }
+    html.js.scrolled .menu-button{ color: var(--paper); }
+    .menu-button:focus-visible{ outline: 2px solid currentColor; outline-offset: -4px; }
+    .menu-button .icon-close,
+    .menu-button[aria-expanded="true"] .icon-menu{ display: none; }
+    .menu-button[aria-expanded="true"] .icon-close{ display: inline; }
+
+    html.js .tabs{
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: auto;
+      max-height: calc(100vh - var(--masthead-h));
+      margin: 0;
+      padding-bottom: 0.75rem;
+      flex-direction: column;
+      overflow-y: auto;
+      background: inherit;
+      border-bottom: 2px solid var(--print-blue);
+    }
+    html.js .menu-button[aria-expanded="true"] + .tabs{ display: flex; }
+    html.js .tabs a{
+      min-height: 48px;
+      padding: 0 5vw;
+      font-size: 1rem;
+    }
   }
 
   @media (max-width: 420px){

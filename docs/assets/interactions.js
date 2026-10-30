@@ -93,3 +93,23 @@ function setScrolled() {
 }
 window.addEventListener("scroll", setScrolled, { passive: true });
 setScrolled();
+
+document.documentElement.classList.add("js");
+
+var menuButton = document.querySelector(".menu-button");
+
+function setMenu(open) {
+  menuButton.setAttribute("aria-expanded", open ? "true" : "false");
+}
+menuButton.addEventListener("click", function () {
+  setMenu(menuButton.getAttribute("aria-expanded") === "false");
+});
+document.querySelectorAll(".tabs a").forEach(function (a) {
+  a.addEventListener("click", function () { setMenu(false); });
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+    setMenu(false);
+    menuButton.focus();
+  }
+});
