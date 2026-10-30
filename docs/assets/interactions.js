@@ -87,3 +87,9 @@ document.querySelectorAll("[data-toc]").forEach(function (scope) {
   }, { passive: true });
   mark();
 });
+
+function setScrolled() {
+  document.documentElement.classList.toggle("scrolled", window.scrollY > 24);
+}
+window.addEventListener("scroll", setScrolled, { passive: true });
+setScrolled();

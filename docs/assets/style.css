@@ -1,12 +1,19 @@
   :root{
-    --paper: #f6f2ea;
-    --ivory: #f6f2ea;
+    --paper: #fdfbf7;
+    --ivory: #fdfbf7;
     --charcoal: #2b2a28;
-    --ink-red: #7a1b1b;
+    --ink-red: #a8321f;
     --ink-blue: #12395c;
     --ink-dark: #2b2620;
     --ink-dark-soft: #4a4238;
-    --nav-h: 40px;
+    --masthead-tall: 200px;
+    --masthead-short: 108px;
+    --masthead-h: var(--masthead-tall);
+    --tab-h: 44px;
+    /* blues from the 1952 Jersey holiday brochure */
+    --print-blue: #2754ab;
+    --text-blue: #1c4494;
+    --logo-red: #b71c1c;
     /* Reading measure: under 80 characters a line (WCAG 1.4.8). */
     --measure: 76ch;
     /* Matches the printed book's own body-text spec (Source Serif 4
@@ -21,7 +28,7 @@
 
   html{
     scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-h);
+    scroll-padding-top: var(--masthead-short);
   }
 
   html, body{
@@ -106,40 +113,135 @@
     border: 0;
   }
 
+  /* Masthead */
+
+  html.scrolled{ --masthead-h: var(--masthead-short); }
+
+  body{ padding-top: var(--masthead-tall); }
+
+  .masthead{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: var(--masthead-h);
+    display: flex;
+    flex-direction: column;
+    padding: 28px 5vw 0;
+    background: var(--paper);
+    transition: height 0.25s ease, background-color 0.25s ease;
+  }
+
+  .masthead-logo{ align-self: flex-start; }
+
+  .masthead-logo img{
+    display: block;
+    width: 320px;
+    height: auto;
+    transition: width 0.25s ease;
+  }
+
+  .masthead-logo .logo-light{ display: none; }
+
+  .masthead a:focus-visible{
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  html.scrolled .masthead{
+    padding-top: 18px;
+    background: var(--print-blue);
+  }
+
+  html.scrolled .masthead-logo img{ width: 110px; }
+  html.scrolled .masthead-logo .logo-red{ display: none; }
+  html.scrolled .masthead-logo .logo-light{ display: block; }
+
   /* ---- tab nav ---- */
 
   .tabs{
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    height: var(--nav-h);
+    height: var(--tab-h);
+    min-width: 0;
+    margin: auto 0 0 -0.8rem;
     display: flex;
-    align-items: center;
-    justify-content: safe center;
-    gap: 1.6rem;
+    align-items: stretch;
     overflow-x: auto;
-    background: #1f5fbf;
   }
 
   .tabs a{
+    display: flex;
+    align-items: center;
+    padding: 0 0.8rem;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     letter-spacing: 0.02em;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 0.3rem 0.2rem;
-    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    color: var(--print-blue);
+    text-decoration: underline 2px transparent;
+    text-underline-offset: 6px;
   }
 
+  html.scrolled .tabs a{ color: var(--paper); }
+
   .tabs a:hover{
-    border-bottom-color: #ffffff;
+    text-decoration-color: currentColor;
   }
 
   .tabs a:focus-visible{
-    outline: 2px solid #ffffff;
-    outline-offset: 2px;
+    outline: 2px solid currentColor;
+    outline-offset: -5px;
   }
+
+  /* each tab has its own band colour, shown when it is the current  page
+     or the section last clicked. The home page sections use the same ones. */
+  .tabs a[href="/"],             #home          { --band: #ffe8cc; }
+  .tabs a[href="/manual/"],      #manual        { --band: #a7f3d0; }
+  .tabs a[href="/#learn"],       #learn         { --band: #fef3c7; }
+  .tabs a[href="/#network"],     #network       { --band: #e9d5ff; }
+  .tabs a[href="/#opportunities"], #opportunities { --band: #fbcfe8; }
+  .tabs a[href="/#news"],        #news          { --band: #ddd6fe; }
+
+  .tabs a[aria-current="page"],
+  body:has(#learn:target) .tabs a[href="/#learn"],
+  body:has(#network:target) .tabs a[href="/#network"],
+  body:has(#opportunities:target) .tabs a[href="/#opportunities"],
+  body:has(#news:target) .tabs a[href="/#news"],
+  html.scrolled .tabs a[aria-current="page"],
+  html.scrolled body:has(#learn:target) .tabs a[href="/#learn"],
+  html.scrolled body:has(#network:target) .tabs a[href="/#network"],
+  html.scrolled body:has(#opportunities:target) .tabs a[href="/#opportunities"],
+  html.scrolled body:has(#news:target) .tabs a[href="/#news"]{
+    background: var(--band);
+    color: var(--text-blue);
+  }
+
+  body:has(#learn:target, #network:target, #opportunities:target, #news:target) .tabs a[aria-current="page"]{
+    background: none;
+    color: var(--print-blue);
+  }
+
+  html.scrolled body:has(#learn:target, #network:target, #opportunities:target, #news:target) .tabs a[aria-current="page"]{
+    color: var(--paper);
+  }
+
+  /* Home page sections read as pages of one brochure: each on its own
+     ground, blue ink, no rules between them. */
+  .home > section{
+    --ink-dark: var(--text-blue);
+    --ink-dark-soft: var(--text-blue);
+    --ink-blue: var(--text-blue);
+    min-height: calc(100vh - var(--masthead-short));
+    min-height: calc(100svh - var(--masthead-short));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .home > section:not(#home){ background: var(--band); }
+
+  .home > section > .section-inner{ width: 100%; }
 
   /* ---- shared section layout ---- */
 
@@ -159,7 +261,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-height: calc(88vh - var(--nav-h));
+    min-height: calc(88vh - var(--masthead-tall));
     justify-content: center;
   }
 
@@ -169,7 +271,8 @@
   }
 
   .card{
-    width: min(72vw, 420px);
+    width: min(72vw, 420px, (100vh - var(--masthead-tall) - 15rem) * 0.77);
+    width: min(72vw, 420px, (100svh - var(--masthead-tall) - 15rem) * 0.77);
     display: block;
     border-radius: 3px;
     transform: rotate(-3deg);
@@ -216,11 +319,6 @@
     margin: 0 0 2.4rem;
   }
 
-  .credit .accent{
-    color: var(--ink-red);
-    font-weight: inherit;
-  }
-
   .launch{
     display: inline-block;
     font-family: "Poppins", sans-serif;
@@ -261,7 +359,7 @@
   }
 
   .cta-btn.primary:hover{
-    background: #611515;
+    background: #8a2818;
   }
 
   .cta-btn.ghost{
@@ -275,12 +373,6 @@
   }
 
   /* ---- manual section ---- */
-
-  #manual, #network{
-    background: rgba(243, 240, 231, 0.62);
-    border-top: 1px solid rgba(43,38,32,0.14);
-    border-bottom: 1px solid rgba(43,38,32,0.14);
-  }
 
   .book-title{
     font-family: "Poppins", sans-serif;
@@ -330,7 +422,6 @@
     font-weight: 700;
     font-size: 1rem;
     color: var(--ink-red);
-    opacity: 0.55;
   }
 
   .modules h4{
@@ -541,12 +632,18 @@
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior: auto; }
+    .masthead, .masthead-logo img{ transition: none; }
     .card{ animation: none; }
   }
 
   @media (max-width: 480px){
-    .tabs{ gap: 0.6rem; }
-    .tabs a{ font-size: 0.8rem; letter-spacing: 0; }
+    :root{ --masthead-tall: 156px; --masthead-short: 104px; --tab-h: 40px; }
+    .masthead{ padding-top: 22px; }
+    .masthead-logo img{ width: 200px; }
+    html.scrolled .masthead{ padding-top: 16px; }
+    html.scrolled .masthead-logo img{ width: 100px; }
+    .tabs{ margin-left: -0.6rem; }
+    .tabs a{ padding: 0 0.6rem; font-size: 0.8rem; letter-spacing: 0; }
   }
 
   @media (max-width: 420px){
@@ -916,11 +1013,11 @@
     .page-toc{
       display: block;
       position: fixed;
-      top: calc(var(--nav-h) + 2rem);
+      top: calc(var(--masthead-h) + 2rem);
       left: calc(50% + 380px + 2.5rem);
       width: calc(50% - 380px - 4rem);
       max-width: 15rem;
-      max-height: calc(100vh - var(--nav-h) - 4rem);
+      max-height: calc(100vh - var(--masthead-h) - 4rem);
       overflow-y: auto;
       font-family: "Urbanist", system-ui, sans-serif;
       font-size: 0.95rem;

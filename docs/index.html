@@ -18,17 +18,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css?v=16">
+<link rel="stylesheet" href="/assets/style.css?v=21">
 </head>
-<body>
-  <nav class="tabs">
-    <a href="/">Home</a>
-    <a href="/manual/">Manual</a>
-    <a href="/#learn">Learn</a>
-    <a href="/#network">Network</a>
-    <a href="/#funding">Funding</a>
-    <a href="/#news">News</a>
-  </nav>
+<body class="home">
+  <header class="masthead">
+    <a class="masthead-logo" href="/"><img class="logo-red" src="/assets/wordmark-red.png" alt="Archiving the Present, home" width="320" height="104"><img class="logo-light" src="/assets/wordmark-light.png" alt="Archiving the Present, home" width="130" height="42"></a>
+    <nav class="tabs" aria-label="Main">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/manual/">Manual</a>
+      <a href="/#learn">Learn</a>
+      <a href="/#network">Network</a>
+      <a href="/#opportunities">Opportunities</a>
+      <a href="/#news">News</a>
+    </nav>
+  </header>
 
   <h1 class="sr-only">Archiving the Present</h1>
 
@@ -43,7 +46,7 @@
 
       <p class="tagline">a community guide to archiving languages, memories &amp; knowledges</p>
 
-      <p class="credit">An emerging network of language and memory keepers, organised by <span class="accent">OpenSpeaks</span>.</p>
+      <p class="credit">An emerging network of language and memory keepers.</p>
 
       <span class="launch">Launched 3 September 2026 at WikiConference India</span>
     </div>
@@ -116,9 +119,9 @@
     </div>
   </section>
 
-  <section id="funding">
+  <section id="opportunities">
     <div class="section-inner">
-      <h2 class="book-title">Funding</h2>
+      <h2 class="book-title">Opportunities</h2>
       <p class="book-lead">Fundraising is a skill, like recording or archiving, and community documenters can learn it too. A few funders that support language documentation and archiving work directly:</p>
 
       <ul class="funders">
@@ -298,5 +301,6 @@
     });
   })();
   </script>
+  <script src="/assets/interactions.js?v=21" defer></script>
 </body>
 </html>
