@@ -1124,3 +1124,121 @@
     border-left-color: var(--ink-blue);
   }
 
+
+  /* Join form */
+
+  .join-form{ margin-top: 2rem; }
+
+  .join-form fieldset{
+    margin: 0 0 2rem;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  .join-form legend{
+    margin-bottom: 0.6rem;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    white-space: normal;
+    color: var(--ink-dark);
+  }
+
+  .join-form .field{ margin-bottom: 1.4rem; }
+
+  .join-form .field > label,
+  .join-form .other{
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+
+  .join-form .other{ margin-top: 0.6rem; }
+
+  .join-form .req{
+    font-weight: 400;
+    color: var(--ink-dark-soft);
+  }
+
+  .join-form .hint{
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+    color: var(--ink-dark-soft);
+  }
+
+  .join-form input[type=text],
+  .join-form input[type=email],
+  .join-form input[type=tel],
+  .join-form input[type=url],
+  .join-form input[type=datetime-local],
+  .join-form textarea{
+    width: 100%;
+    max-width: 36rem;
+    padding: 0.55rem 0.7rem;
+    font: inherit;
+    color: var(--ink-dark);
+    background: #ffffff;
+    border: 1.5px solid #6b6258;
+    border-radius: 3px;
+  }
+
+  .join-form .choice{
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    padding: 0.3rem 0;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .join-form .choice input{
+    flex: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0.15rem 0 0;
+    accent-color: var(--ink-blue);
+  }
+
+  .join-form input:focus-visible,
+  .join-form textarea:focus-visible,
+  .join-form button:focus-visible{
+    outline: 2px solid var(--ink-blue);
+    outline-offset: 2px;
+  }
+
+  .join-form .terms{
+    padding: 1.2rem 1.4rem;
+    background: #fef3c7;
+    border-radius: 3px;
+  }
+
+  .join-form .terms ul{
+    margin: 0 0 1rem;
+    padding-left: 1.2rem;
+    line-height: 1.55;
+  }
+
+  .join-form .cta-btn{
+    border: 0;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+
+  .join-form .cta-btn:disabled{ cursor: progress; }
+
+  .form-status{
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+
+  .hp{
+    position: absolute;
+    left: -9999px;
+  }
+
+  .join-thanks{ margin-top: 2rem; }
+  .join-thanks:focus{ outline: none; }

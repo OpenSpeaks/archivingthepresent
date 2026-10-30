@@ -113,3 +113,53 @@ document.addEventListener("keydown", function (e) {
     menuButton.focus();
   }
 });
+
+var joinForm = document.querySelector(".join-form");
+
+if (joinForm) {
+  var blocks = joinForm.querySelectorAll(".join-block");
+  var howBoxes = joinForm.querySelectorAll("[name=how]");
+
+  joinForm.querySelectorAll("[data-required]").forEach(function (c) { c.required = true; });
+
+  function updateJoinForm() {
+    blocks.forEach(function (block) {
+      var rule = block.getAttribute("data-show").split("=");
+      var match = joinForm.querySelector("[name=" + rule[0] + "][value=" + rule[1] + "]");
+      block.hidden = !match.checked;
+    });
+    joinForm.querySelectorAll("input, textarea").forEach(function (c) {
+      if (c.name !== "website") c.disabled = !!c.closest(".join-block[hidden]");
+    });
+    var noneTicked = !Array.prototype.some.call(howBoxes, function (b) { return b.checked; });
+    howBoxes[0].setCustomValidity(noneTicked ? "Choose at least one way to join." : "");
+  }
+
+  joinForm.addEventListener("change", updateJoinForm);
+  updateJoinForm();
+
+  joinForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var status = joinForm.querySelector(".form-status");
+    var button = joinForm.querySelector("[type=submit]");
+    var data = new URLSearchParams(new FormData(joinForm));
+    data.append("via", "fetch");
+    data.append("timezone", Intl.DateTimeFormat().resolvedOptions().timeZone || "");
+    status.textContent = "Sending your request.";
+    button.disabled = true;
+
+    fetch(joinForm.action, { method: "POST", body: data })
+      .then(function (r) { return r.json(); })
+      .then(function (reply) {
+        if (!reply.ok) throw new Error(reply.message);
+        var thanks = document.querySelector(".join-thanks");
+        joinForm.hidden = true;
+        thanks.hidden = false;
+        thanks.focus();
+      })
+      .catch(function () {
+        status.textContent = "Your request could not be sent. Please try again, or write to hello@archivingthepresent.cc.";
+        button.disabled = false;
+      });
+  });
+}
