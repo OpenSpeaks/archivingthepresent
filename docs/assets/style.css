@@ -142,8 +142,6 @@
     transition: width 0.25s ease;
   }
 
-  .masthead-logo .logo-light{ display: none; }
-
   .masthead a:focus-visible{
     outline: 2px solid currentColor;
     outline-offset: 4px;
@@ -151,12 +149,10 @@
 
   html.scrolled .masthead{
     padding-top: 18px;
-    background: var(--print-blue);
+    background: #f3efe7;
   }
 
   html.scrolled .masthead-logo img{ width: 110px; }
-  html.scrolled .masthead-logo .logo-red{ display: none; }
-  html.scrolled .masthead-logo .logo-light{ display: block; }
 
   /* ---- tab nav ---- */
 
@@ -183,8 +179,6 @@
     text-underline-offset: 6px;
   }
 
-  html.scrolled .tabs a{ color: var(--paper); }
-
   .tabs a:hover{
     text-decoration-color: currentColor;
   }
@@ -206,11 +200,7 @@
   .tabs a[aria-current="page"],
   body:has(#learn:target) .tabs a[href="/#learn"],
   body:has(#opportunities:target) .tabs a[href="/#opportunities"],
-  body:has(#news:target) .tabs a[href="/#news"],
-  html.scrolled .tabs a[aria-current="page"],
-  html.scrolled body:has(#learn:target) .tabs a[href="/#learn"],
-  html.scrolled body:has(#opportunities:target) .tabs a[href="/#opportunities"],
-  html.scrolled body:has(#news:target) .tabs a[href="/#news"]{
+  body:has(#news:target) .tabs a[href="/#news"]{
     background: var(--band);
     color: var(--text-blue);
   }
@@ -218,10 +208,6 @@
   body:has(#learn:target, #opportunities:target, #news:target) .tabs a[aria-current="page"]{
     background: none;
     color: var(--print-blue);
-  }
-
-  html.scrolled body:has(#learn:target, #opportunities:target, #news:target) .tabs a[aria-current="page"]{
-    color: var(--paper);
   }
 
   /* Home page sections read as pages of one brochure: each on its own
@@ -677,7 +663,6 @@
       color: var(--print-blue);
       cursor: pointer;
     }
-    html.js.scrolled .menu-button{ color: var(--paper); }
     .menu-button:focus-visible{ outline: 2px solid currentColor; outline-offset: -4px; }
     .menu-button .icon-close,
     .menu-button[aria-expanded="true"] .icon-menu{ display: none; }
