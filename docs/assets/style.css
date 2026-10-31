@@ -199,30 +199,28 @@
   .tabs a[href="/"],             #home          { --band: #ffe8cc; }
   .tabs a[href="/manual/"],      #manual        { --band: #a7f3d0; }
   .tabs a[href="/#learn"],       #learn         { --band: #fef3c7; }
-  .tabs a[href="/#network"],     #network       { --band: #e9d5ff; }
+  .tabs a[href="/network/"],    #network       { --band: #e9d5ff; }
   .tabs a[href="/#opportunities"], #opportunities { --band: #fbcfe8; }
   .tabs a[href="/#news"],        #news          { --band: #ddd6fe; }
 
   .tabs a[aria-current="page"],
   body:has(#learn:target) .tabs a[href="/#learn"],
-  body:has(#network:target) .tabs a[href="/#network"],
   body:has(#opportunities:target) .tabs a[href="/#opportunities"],
   body:has(#news:target) .tabs a[href="/#news"],
   html.scrolled .tabs a[aria-current="page"],
   html.scrolled body:has(#learn:target) .tabs a[href="/#learn"],
-  html.scrolled body:has(#network:target) .tabs a[href="/#network"],
   html.scrolled body:has(#opportunities:target) .tabs a[href="/#opportunities"],
   html.scrolled body:has(#news:target) .tabs a[href="/#news"]{
     background: var(--band);
     color: var(--text-blue);
   }
 
-  body:has(#learn:target, #network:target, #opportunities:target, #news:target) .tabs a[aria-current="page"]{
+  body:has(#learn:target, #opportunities:target, #news:target) .tabs a[aria-current="page"]{
     background: none;
     color: var(--print-blue);
   }
 
-  html.scrolled body:has(#learn:target, #network:target, #opportunities:target, #news:target) .tabs a[aria-current="page"]{
+  html.scrolled body:has(#learn:target, #opportunities:target, #news:target) .tabs a[aria-current="page"]{
     color: var(--paper);
   }
 
@@ -392,7 +390,8 @@
     margin: -2.2rem auto 3rem;
   }
 
-  h3.group-label{
+  h3.group-label,
+  h2.group-label{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-size: 0.78rem;
@@ -506,10 +505,13 @@
     gap: 1rem;
   }
 
-  .org-list h4{
+  .org-list h4,
+  .org-list h3{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-size: 1rem;
+    letter-spacing: normal;
+    text-transform: none;
     margin: 0 0 0.2rem;
     color: var(--ink-dark);
   }
@@ -1239,6 +1241,80 @@
     position: absolute;
     left: -9999px;
   }
+
+  /* Member cards, on the Manual green */
+  .member-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: 1.2rem;
+    /* wider than the 760px text column so three cards fit a row */
+    width: min(1080px, calc(100vw - 2.5rem));
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .member{
+    background: #a7f3d0;
+    border-radius: 3px;
+    padding: 1.2rem 1.3rem 1.4rem;
+    color: var(--ink-dark);
+  }
+
+  .member h3{
+    font-size: 1.15rem;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--text-blue);
+    margin: 0 0 0.3rem;
+  }
+
+  .member .member-sub{
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--ink-dark);
+    margin: 0 0 0.2rem;
+  }
+
+  .member dl{ margin: 0; }
+
+  .member dt{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--text-blue);
+    margin-top: 0.8rem;
+  }
+
+  .member dd{
+    margin: 0.15rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .member .chips{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+  }
+
+  .member .chips li{
+    background: #fff;
+    color: var(--text-blue);
+    border-radius: 3px;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.82rem;
+  }
+
+  h2.group-label{ text-align: left; }
+  .network-page #join{ margin-top: 3rem; }
+  .org-list p + p{ margin-top: 0.2rem; }
 
   .join-thanks{ margin-top: 2rem; }
   .join-thanks:focus{ outline: none; }
