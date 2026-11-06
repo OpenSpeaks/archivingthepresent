@@ -347,10 +347,11 @@
               <button class="small-btn add-language" type="button"><span lang="en">Add</span><span lang="hi">जोड़ें</span></button>
             </div>
             <ul class="added-languages" aria-live="polite"></ul>
+            <input type="checkbox" name="has_other" value="yes" hidden>
           </div>
-          <fieldset class="field">
-            <legend><span lang="en">What is your connection to these other languages?</span><span lang="hi">इन दूसरी भाषाओं से आपका क्या रिश्ता है?</span></legend>
-            <label class="choice"><input type="radio" name="other_speaker" value="First language"> <span lang="en">It is my first language</span><span lang="hi">यह मेरी पहली भाषा है</span></label>
+          <fieldset class="field join-block" data-show="has_other=yes">
+            <legend><span lang="en">What is your connection to these other languages?</span><span lang="hi">इन दूसरी भाषाओं से आपका क्या रिश्ता है?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
+            <label class="choice"><input type="radio" name="other_speaker" value="First language" data-required> <span lang="en">It is my first language</span><span lang="hi">यह मेरी पहली भाषा है</span></label>
             <label class="choice"><input type="radio" name="other_speaker" value="Speaks it, learnt later"> <span lang="en">I speak it, but learnt it later</span><span lang="hi">मैं इसे बोलता/बोलती हूँ, पर बाद में सीखी</span></label>
             <label class="choice"><input type="radio" name="other_speaker" value="Understands, speaks a little"> <span lang="en">I understand it, but speak only a little</span><span lang="hi">मैं इसे समझता/समझती हूँ, पर थोड़ा ही बोलता/बोलती हूँ</span></label>
             <label class="choice"><input type="radio" name="other_speaker" value="Does not speak it, works with speakers"> <span lang="en">I don't speak it, but I work with its speakers</span><span lang="hi">मैं इसे नहीं बोलता/बोलती, पर इसके बोलने वालों के साथ काम करता/करती हूँ</span></label>
@@ -506,6 +507,6 @@
     <span class="domain">archivingthepresent.cc</span>
     <p class="colophon-credit">Cover artwork by Siddhesh Gautam, letterpress print by House of Press. Unless otherwise mentioned, site content under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY SA 4.0</a>.</p>
   </footer>
-  <script src="/assets/interactions.js?v=38" defer></script>
+  <script src="/assets/interactions.js?v=39" defer></script>
 </body>
 </html>

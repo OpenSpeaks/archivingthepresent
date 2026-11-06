@@ -200,6 +200,7 @@ if (joinForm) {
       data.delete("phone_code");
     }
     data.delete("family_needed");
+    data.delete("has_other");
     data.append("via", "fetch");
     data.append("ui_lang", hi ? "hi" : "en");
     data.append("timezone", Intl.DateTimeFormat().resolvedOptions().timeZone || "");
@@ -295,7 +296,7 @@ var languages = null;
 
 function loadLanguages() {
   if (!languages) {
-    languages = fetch("/assets/languages.csv?v=2")
+    languages = fetch("/assets/languages.csv?v=3")
       .then(function (r) { return r.text(); })
       .then(function (text) {
         var seen = {};
@@ -433,6 +434,11 @@ if (mainLanguage) {
   var added = document.querySelector(".added-languages");
   var picked = null;
 
+  var markOthers = function () {
+    mainLanguage.form.elements.has_other.checked = added.children.length > 0;
+    mainLanguage.form.dispatchEvent(new Event("change"));
+  };
+
   var addLanguage = function () {
     var name = moreLanguage.value.trim();
     if (!name) return;
@@ -447,9 +453,10 @@ if (mainLanguage) {
     remove.className = "small-btn";
     remove.textContent = isHindi() ? "हटाएँ" : "Remove";
     remove.setAttribute("aria-label", (isHindi() ? "हटाएँ: " : "Remove ") + value);
-    remove.addEventListener("click", function () { li.remove(); moreLanguage.focus(); });
+    remove.addEventListener("click", function () { li.remove(); markOthers(); moreLanguage.focus(); });
     li.append(value + " ", hidden, remove);
     added.appendChild(li);
+    markOthers();
     moreLanguage.value = "";
     picked = null;
   };
