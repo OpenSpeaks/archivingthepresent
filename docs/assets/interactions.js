@@ -135,7 +135,7 @@ if (joinForm) {
     });
     var rest = joinForm.querySelector(".form-rest");
     if (rest) {
-      var away = joinForm.querySelector("[name=attend][value=No]").checked;
+      var away = joinForm.querySelector("[name=attend][value=No]").checked || joinForm.querySelector("[name=adult][value=No]").checked;
       rest.inert = away;
       rest.classList.toggle("greyed", away);
     }
@@ -148,25 +148,26 @@ if (joinForm) {
   }
 
   var phone = joinForm.querySelector("#phone[aria-describedby=phone-hint]");
+  var phoneCode = joinForm.querySelector("#phone_code");
+  // Maldives numbers have 7 digits, Bhutan 8 and Sri Lanka 9
   function checkPhone() {
     if (!phone) return;
-    var digits = phone.value.replace(/\D/g, "");
-    var abroad = joinForm.querySelector("[name=region][value=south-asia]").checked;
-    var ok;
-    if (abroad) {
-      ok = digits.length >= 9 && digits.length <= 15;
-    } else {
-      if (digits.length === 12 && digits.startsWith("91")) digits = digits.slice(2);
-      if (digits.length === 11 && digits.startsWith("0")) digits = digits.slice(1);
-      ok = /^[6-9]\d{9}$/.test(digits);
-    }
+    var india = phoneCode.value === "+91";
+    var ok = india ? /^[6-9]\d{9}$/.test(phone.value) : /^\d{7,10}$/.test(phone.value);
     phone.setCustomValidity(!phone.value || ok ? "" : isHindi()
-      ? "कृपया 10 अंकों का सही मोबाइल नंबर लिखें। भारत से बाहर हों तो देश का कोड जोड़ें।"
-      : "Please enter a valid 10-digit mobile number. Outside India, add your country code.");
+      ? (india ? "कृपया 10 अंकों का सही मोबाइल नंबर लिखें।" : "कृपया 7 से 10 अंकों का मोबाइल नंबर लिखें, देश के कोड के बिना।")
+      : (india ? "Please enter a valid 10-digit mobile number." : "Please enter a mobile number of 7 to 10 digits, without the country code."));
+    phoneCode.setCustomValidity(/^\+\d{1,3}$/.test(phoneCode.value) ? "" : isHindi()
+      ? "देश का कोड + से शुरू करें, जैसे +91 या +977।"
+      : "Start the country code with +, such as +91 or +977.");
   }
   if (phone) {
     phone.addEventListener("input", function () {
-      phone.value = phone.value.replace(/[^\d+\s()-]/g, "");
+      phone.value = phone.value.replace(/\D/g, "");
+      checkPhone();
+    });
+    phoneCode.addEventListener("input", function () {
+      phoneCode.value = "+" + phoneCode.value.replace(/\D/g, "");
       checkPhone();
     });
   }
@@ -194,6 +195,11 @@ if (joinForm) {
     var status = joinForm.querySelector(".form-status");
     var button = joinForm.querySelector("[type=submit]");
     var data = new URLSearchParams(new FormData(joinForm));
+    if (phoneCode) {
+      data.set("phone", phoneCode.value + " " + phone.value);
+      data.delete("phone_code");
+    }
+    data.delete("family_needed");
     data.append("via", "fetch");
     data.append("ui_lang", hi ? "hi" : "en");
     data.append("timezone", Intl.DateTimeFormat().resolvedOptions().timeZone || "");
@@ -271,15 +277,20 @@ document.querySelectorAll("textarea[data-max-words]").forEach(function (t) {
   t.dispatchEvent(new Event("input"));
 });
 
-var linkBox = document.getElementById("language_links");
-if (linkBox) {
-  linkBox.addEventListener("change", function () {
-    linkBox.value = linkBox.value.split(/[\s,;]+/).filter(Boolean).join("\n");
+document.querySelectorAll("textarea[data-links]").forEach(function (box) {
+  box.addEventListener("change", function () {
+    var links = box.value.split(/[\s,;]+/).filter(Boolean);
+    box.value = links.join("\n");
+    var bad = links.filter(function (link) { return !/^https?:\/\/[^\s.]+\.[^\s]+$/i.test(link); });
+    box.setCustomValidity(!bad.length ? "" : isHindi()
+      ? "हर लिंक http:// या https:// से शुरू होना चाहिए। यह ठीक करें: " + bad[0]
+      : "Each link should start with http:// or https://. Please check: " + bad[0]);
   });
-}
+});
 
 // Language list and search from Tome (https://gitlab.wikimedia.org/toolforge-repos/tome, MIT),
-// assets/languages.csv is Tome's languages.csv
+// assets/languages.csv is Tome's languages.csv with a family column added from Glottolog
+// (https://glottolog.org, CC BY 4.0)
 var languages = null;
 
 function loadLanguages() {
@@ -294,7 +305,7 @@ function loadLanguages() {
           if (!code || !name || seen[code]) return out;
           seen[code] = true;
           var split = function (v) { return (v || "").split(";").map(function (a) { return a.trim(); }).filter(Boolean); };
-          out.push({ code: code, name: name, localNames: split(row[2]), alternates: split(row[3]) });
+          out.push({ code: code, name: name, localNames: split(row[2]), alternates: split(row[3]), family: (row[4] || "").trim() });
           return out;
         }, []);
       });
@@ -339,10 +350,10 @@ function searchLanguages(list, query) {
   altMatches.sort(function (a, b) { return closeness(a.alt) - closeness(b.alt) || a.alt.localeCompare(b.alt); });
   return codeMatches.concat(nameMatches).map(function (e) {
     var local = e.localNames[0];
-    return { code: e.code, name: e.name, display: e.name + (local ? " (" + local + ")" : "") + " · " + e.code };
+    return { code: e.code, name: e.name, family: e.family, display: e.name + (local ? " (" + local + ")" : "") + " · " + e.code };
   }).concat(altMatches.map(function (m) {
     var label = m.alt + "-" + m.entry.name;
-    return { code: m.entry.code, name: label, display: label + " · " + m.entry.code };
+    return { code: m.entry.code, name: label, family: m.entry.family, display: label + " · " + m.entry.code };
   })).slice(0, 8);
 }
 
@@ -396,10 +407,26 @@ function languageCombo(input, onPick, onEnter) {
 var mainLanguage = document.getElementById("language");
 if (mainLanguage) {
   var mainCode = mainLanguage.form.elements.language_code;
-  mainLanguage.addEventListener("input", function () { mainCode.value = ""; });
+  var familyFound = mainLanguage.form.querySelector("[data-family-found]");
+  var familyNeeded = mainLanguage.form.elements.family_needed;
+  var familyNote = mainLanguage.form.querySelector(".family-found");
+
+  var setFamily = function (family) {
+    familyFound.value = family;
+    familyNeeded.checked = !family;
+    familyNote.hidden = !family;
+    familyNote.querySelector("[data-family-name]").textContent = family;
+    mainLanguage.form.dispatchEvent(new Event("change"));
+  };
+
+  mainLanguage.addEventListener("input", function () {
+    mainCode.value = "";
+    if (familyFound.value) setFamily("");
+  });
   languageCombo(mainLanguage, function (m) {
     mainLanguage.value = m.name;
     mainCode.value = m.code;
+    setFamily(m.family);
   });
 
   var moreLanguage = document.getElementById("more_language");
