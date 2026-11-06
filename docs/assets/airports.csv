@@ -11,21 +11,27 @@ ATQ,Amritsar,Sri Guru Ram Das Ji International Airport,Punjab
 IXU,Aurangabad,Aurangabad Airport,Maharashtra
 AYJ,Ayodhya,Maharshi Valmiki International Airport,Uttar Pradesh
 IXB,Bagdogra (Siliguri),Bagdogra Airport,West Bengal
+VDY,Ballari (Vidyanagar),Jindal Vijaynagar Airport,Karnataka
 BEK,Bareilly,Bareilly Airport,Uttar Pradesh
+BUP,Bathinda,Bathinda Airport,Punjab
 IXG,Belagavi,Belagavi Airport,Karnataka
 BHU,Bhavnagar,Bhavnagar Airport,Gujarat
 UKE,Bhawanipatna,Utkela Airport,Odisha
 BHO,Bhopal,Raja Bhoj International Airport,Madhya Pradesh
 BBI,Bhubaneswar,Biju Patnaik International Airport,Odisha
 BHJ,Bhuj,Bhuj Airport,Gujarat
+IXX,Bidar,Bidar Airport,Karnataka
+BKB,Bikaner,Nal Airport,Rajasthan
 PAB,Bilaspur,Bilaspur Airport,Chhattisgarh
 IXC,Chandigarh,Shaheed Bhagat Singh International Airport,Chandigarh
 MAA,Chennai,Chennai International Airport,Tamil Nadu
 CJB,Coimbatore,Coimbatore International Airport,Tamil Nadu
+NMB,Daman,Daman Airport,Dadra and Nagar Haveli and Daman and Diu
 DBR,Darbhanga,Darbhanga Airport,Bihar
 DED,Dehradun,Dehradun Jolly Grant Airport,Uttarakhand
 DEL,Delhi,Indira Gandhi International Airport,Delhi
 DGH,Deoghar,Deoghar Airport,Jharkhand
+RUP,Dhubri (Rupsi),Rupsi Airport,Assam
 DIB,Dibrugarh,Dibrugarh Airport,Assam
 DMU,Dimapur,Dimapur Airport,Nagaland
 DIU,Diu,Diu Airport,Dadra and Nagar Haveli and Daman and Diu
@@ -53,6 +59,7 @@ AIP,Jalandhar (Adampur),Adampur Airport,Punjab
 JLG,Jalgaon,Jalgaon Airport,Maharashtra
 IXJ,Jammu,Jammu Airport,Jammu and Kashmir
 JGA,Jamnagar,Jamnagar Airport,Gujarat
+PYB,Jeypore,Jeypore Airport,Odisha
 JRG,Jharsuguda,Jharsuguda Airport,Odisha
 JDH,Jodhpur,Jodhpur Airport,Rajasthan
 JRH,Jorhat,Jorhat Airport,Assam
@@ -77,6 +84,7 @@ IXM,Madurai,Madurai Airport,Tamil Nadu
 IXE,Mangaluru,Mangaluru International Airport,Karnataka
 MZS,Moradabad,Moradabad Airport,Uttar Pradesh
 BOM,Mumbai,Chhatrapati Shivaji Maharaj International Airport,Maharashtra
+,Mundra,Mundra Airport,Gujarat
 MYQ,Mysuru,Mysuru Airport,Karnataka
 NAG,Nagpur,Dr. Babasaheb Ambedkar International Airport,Maharashtra
 NDC,Nanded,Nanded Airport,Maharashtra
@@ -87,24 +95,29 @@ IXI,North Lakhimpur,Lilabari North Lakhimpur Airport,Assam
 PGH,Pantnagar,Pantnagar Airport,Uttarakhand
 IXP,Pathankot,Pathankot Airport,Punjab
 PAT,Patna,Jay Prakash Narayan Airport,Bihar
+,Pithoragarh,Pithoragarh Airport,Uttarakhand
 PBD,Porbandar,Porbandar Airport,Gujarat
 IXZ,Port Blair,Veer Savarkar International Airport,Andaman and Nicobar Islands
 IXD,Prayagraj,Prayagraj Airport,Uttar Pradesh
 PNY,Puducherry,Pondicherry Airport,Puducherry
 PNQ,Pune,Pune International Airport,Maharashtra
+,Purnea,Purnea Airport,Bihar
 RPR,Raipur,Swami Vivekananda Airport,Chhattisgarh
 RJA,Rajahmundry,Rajahmundry Airport,Andhra Pradesh
 HSR,Rajkot,Rajkot International Airport,Gujarat
 IXR,Ranchi,Birsa Munda Airport,Jharkhand
 REW,Rewa,Rewa Airport,Madhya Pradesh
+SXV,Salem,Salem Airport,Tamil Nadu
 SHL,Shillong,Shillong Airport,Meghalaya
 SAG,Shirdi,Shirdi International Airport,Maharashtra
+RQY,Shivamogga,Rashtrakavi Kuvempu Airport,Karnataka
 VSV,Shravasti,Shravasti Airport,Uttar Pradesh
 IXS,Silchar,Silchar Airport,Assam
 SDW,Sindhudurg,Sindhudurg Airport,Maharashtra
 SXR,Srinagar,Srinagar International Airport,Jammu and Kashmir
 STV,Surat,Surat International Airport,Gujarat
 TEZ,Tezpur,Tezpur Airport,Assam
+TEI,Tezu,Tezu Airport,Arunachal Pradesh
 TRV,Thiruvananthapuram,Thiruvananthapuram International Airport,Kerala
 TCR,Thoothukudi,Tuticorin Airport,Tamil Nadu
 TRZ,Tiruchirappalli,Tiruchirappalli International Airport,Tamil Nadu
