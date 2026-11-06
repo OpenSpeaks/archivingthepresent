@@ -473,7 +473,7 @@ if (mainLanguage) {
 var airportSelect = document.getElementById("airport");
 if (airportSelect) {
   var stateSelect = document.getElementById("state");
-  var airports = fetch("/assets/airports.csv?v=3")
+  var airports = fetch("/assets/airports.csv?v=4")
     .then(function (r) { return r.text(); })
     .then(function (text) {
       return parseCsvRows(text).slice(1).filter(function (row) { return row[1]; });
