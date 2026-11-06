@@ -213,7 +213,7 @@ if (joinForm) {
         if (!reply.ok && reply.message === "repeat" && repeatCheck) {
           askRepeat();
           status.textContent = isHindi()
-            ? "इस ईमेल से पहले ही एक आवेदन आ चुका है। नीचे दिए बॉक्स को देखें और फिर से भेजें।"
+            ? "इस ईमेल से पहले ही एक आवेदन आ चुका है। ऊपर दिए बॉक्स को देखें और फिर से भेजें।"
             : "We already have an application with this email. Please see the box above and send again.";
           button.disabled = false;
           repeatCheck.querySelector("input").focus();
@@ -473,10 +473,10 @@ if (mainLanguage) {
 var airportSelect = document.getElementById("airport");
 if (airportSelect) {
   var stateSelect = document.getElementById("state");
-  var airports = fetch("/assets/airports.csv?v=2")
+  var airports = fetch("/assets/airports.csv?v=3")
     .then(function (r) { return r.text(); })
     .then(function (text) {
-      return parseCsvRows(text).slice(1).filter(function (row) { return row[0]; });
+      return parseCsvRows(text).slice(1).filter(function (row) { return row[1]; });
     });
 
   var listAirports = function () {
@@ -498,8 +498,9 @@ if (airportSelect) {
         optgroup.label = group[0];
         group[1].forEach(function (row) {
           var option = document.createElement("option");
-          option.value = row[1] + " (" + row[0] + "), " + row[2];
-          option.textContent = row[1] + ": " + row[2] + " (" + row[0] + ")";
+          var code = row[0] ? " (" + row[0] + ")" : "";
+          option.value = row[1] + code + ", " + row[2];
+          option.textContent = row[1] + ": " + row[2] + code;
           if (group[2]) option.className = group[2];
           optgroup.appendChild(option);
         });
