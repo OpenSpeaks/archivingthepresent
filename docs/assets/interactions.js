@@ -188,6 +188,8 @@ if (joinForm) {
     var button = joinForm.querySelector("[type=submit]");
     var data = new URLSearchParams(new FormData(joinForm));
     data.append("via", "fetch");
+    data.append("ui_lang", hi ? "hi" : "en");
+    data.append("ui_lang", hi ? "hi" : "en");
     data.append("timezone", Intl.DateTimeFormat().resolvedOptions().timeZone || "");
     status.textContent = joinForm.dataset[hi ? "sendingHi" : "sending"];
     button.disabled = true;
