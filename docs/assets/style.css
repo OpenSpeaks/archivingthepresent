@@ -55,7 +55,7 @@
     background-image: none;
   }
 
-  /* ---- base element typography ----
+  /* Base element typography
      Fallback defaults for any h1-h4/p dropped in without a specific
      class (e.g. a manual future edit). Section-specific classes below
      (.book-title, .group-label, .org-list p, etc.) override these where
@@ -154,7 +154,7 @@
 
   html.scrolled .masthead-logo img{ width: 110px; }
 
-  /* ---- tab nav ---- */
+  /* Tab nav */
 
   .tabs{
     height: var(--tab-h);
@@ -227,7 +227,7 @@
 
   .home > section > .section-inner{ width: 100%; }
 
-  /* ---- shared section layout ---- */
+  /* Shared section layout */
 
   section{
     padding: 6vh 5vw 8vh;
@@ -238,7 +238,7 @@
     margin: 0 auto;
   }
 
-  /* ---- home / hero ---- */
+  /* Home / hero */
 
   #home .section-inner{
     display: flex;
@@ -316,7 +316,7 @@
     padding: 0.55rem 1.3rem;
   }
 
-  /* ---- CTA buttons (shared: manual download, course link) ---- */
+  /* CTA buttons (shared: manual download, course link) */
 
   .cta-row{
     display: flex;
@@ -356,7 +356,7 @@
     background: rgba(18,57,92,0.08);
   }
 
-  /* ---- manual section ---- */
+  /* Manual section */
 
   .book-title{
     font-family: "Poppins", sans-serif;
@@ -468,13 +468,13 @@
     margin: 0;
   }
 
-  /* ---- learn section ---- */
+  /* Learn section */
 
   #learn .section-inner{
     text-align: center;
   }
 
-  /* ---- network section ---- */
+  /* Network section */
 
   .org-group{
     margin: 0 0 2.4rem;
@@ -529,7 +529,7 @@
     margin: 0 0 1.2rem;
   }
 
-  /* ---- funding section ---- */
+  /* Funding section */
 
   .funders{
     list-style: none;
@@ -575,7 +575,7 @@
     margin: 0;
   }
 
-  /* ---- shared footer ---- */
+  /* Shared footer */
 
   footer{
     display: flex;
@@ -696,7 +696,7 @@
     .modules li{ grid-template-columns: 2rem 1fr; }
   }
 
-  /* ---- manual + module subpages (docs/manual/, docs/manual/module-0X/) ---- */
+  /* Manual + module subpages (docs/manual/, docs/manual/module-0X/) */
 
   .breadcrumb{
     display: block;
@@ -914,7 +914,7 @@
 
   .module-page .cta-row{ justify-content: flex-start; }
 
-  /* ---- ARK permalink + copy/download controls ---- */
+  /* ARK permalink + copy/download controls */
 
   .ark-permalink{
     display: flex;
@@ -970,7 +970,7 @@
     border-radius: 3px;
   }
 
-  /* ---- citation block (module pages) ---- */
+  /* Citation block (module pages) */
 
   .citation-block{
     max-width: 760px;
