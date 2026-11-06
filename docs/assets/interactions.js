@@ -131,12 +131,45 @@ if (joinForm) {
     joinForm.querySelectorAll("input, textarea, select").forEach(function (c) {
       if (c.name !== "website") c.disabled = !!c.closest(".join-block[hidden]");
     });
+    var rest = joinForm.querySelector(".form-rest");
+    if (rest) {
+      var away = joinForm.querySelector("[name=attend][value=No]").checked;
+      rest.inert = away;
+      rest.classList.toggle("greyed", away);
+    }
+    checkPhone();
     pickGroups.forEach(function (group) {
       var boxes = group.querySelectorAll("[type=checkbox]");
       var noneTicked = !Array.prototype.some.call(boxes, function (b) { return b.checked; });
       boxes[0].setCustomValidity(noneTicked && !boxes[0].disabled ? group.getAttribute("data-pick-one") : "");
     });
   }
+
+  var phone = joinForm.querySelector("#phone[aria-describedby=phone-hint]");
+  function checkPhone() {
+    if (!phone) return;
+    var digits = phone.value.replace(/\D/g, "");
+    var abroad = joinForm.querySelector("[name=region][value=south-asia]").checked;
+    var ok;
+    if (abroad) {
+      ok = digits.length >= 9 && digits.length <= 15;
+    } else {
+      if (digits.length === 12 && digits.startsWith("91")) digits = digits.slice(2);
+      if (digits.length === 11 && digits.startsWith("0")) digits = digits.slice(1);
+      ok = /^[6-9]\d{9}$/.test(digits);
+    }
+    phone.setCustomValidity(!phone.value || ok ? "" : isHindi()
+      ? "कृपया 10 अंकों का सही मोबाइल नंबर लिखें। भारत से बाहर हों तो देश का कोड जोड़ें।"
+      : "Please enter a valid 10-digit mobile number. Outside India, add your country code.");
+  }
+  if (phone) phone.addEventListener("input", checkPhone);
+
+  var repeatCheck = joinForm.querySelector(".repeat-check");
+  function askRepeat() {
+    repeatCheck.hidden = false;
+    repeatCheck.querySelector("input").required = true;
+  }
+  if (repeatCheck && localStorage.getItem("atp-applied")) askRepeat();
 
   joinForm.addEventListener("change", updateJoinForm);
   updateJoinForm();
@@ -162,7 +195,17 @@ if (joinForm) {
     fetch(joinForm.action, { method: "POST", body: data })
       .then(function (r) { return r.json(); })
       .then(function (reply) {
+        if (!reply.ok && reply.message === "repeat" && repeatCheck) {
+          askRepeat();
+          status.textContent = isHindi()
+            ? "इस ईमेल से पहले ही एक आवेदन आ चुका है। नीचे दिए बॉक्स को देखें और फिर से भेजें।"
+            : "We already have an application with this email. Please see the box above and send again.";
+          button.disabled = false;
+          repeatCheck.querySelector("input").focus();
+          return;
+        }
         if (!reply.ok) throw new Error(reply.message);
+        if (repeatCheck) localStorage.setItem("atp-applied", "1");
         var thanks = document.querySelector(".join-thanks");
         joinForm.hidden = true;
         thanks.hidden = false;
@@ -197,6 +240,7 @@ function isHindi() {
 
 document.querySelectorAll("textarea[data-max-words]").forEach(function (t) {
   var max = +t.getAttribute("data-max-words");
+  var min = +t.getAttribute("data-min-words") || 0;
   var count = document.createElement("span");
   count.className = "word-count";
   count.id = t.id + "-count";
@@ -206,13 +250,14 @@ document.querySelectorAll("textarea[data-max-words]").forEach(function (t) {
   t.addEventListener("input", function () {
     var n = (t.value.match(/\S+/g) || []).length;
     var over = n > max;
-    count.classList.toggle("over", over);
+    var under = n > 0 && n < min;
+    count.classList.toggle("over", over || under);
     if (isHindi()) {
-      count.textContent = n + " / " + max + " शब्द" + (over ? ", कृपया छोटा करें" : "");
-      t.setCustomValidity(over ? max + " शब्दों से ज़्यादा न लिखें।" : "");
+      count.textContent = n + " / " + max + " शब्द" + (min ? ", कम से कम " + min : "") + (over ? ", कृपया छोटा करें" : "");
+      t.setCustomValidity(over ? max + " शब्दों से ज़्यादा न लिखें।" : under ? "कृपया कम से कम " + min + " शब्द लिखें।" : "");
     } else {
-      count.textContent = n + " / " + max + " words" + (over ? ", please shorten" : "");
-      t.setCustomValidity(over ? "Please keep this to " + max + " words or fewer." : "");
+      count.textContent = n + " / " + max + " words" + (min ? ", at least " + min : "") + (over ? ", please shorten" : "");
+      t.setCustomValidity(over ? "Please keep this to " + max + " words or fewer." : under ? "Please write at least " + min + " words." : "");
     }
   });
   t.dispatchEvent(new Event("input"));

@@ -1433,3 +1433,12 @@
     font-weight: 600;
     color: var(--ink-red);
   }
+
+  .form-notice{
+    margin: 0 0 2rem;
+    padding: 0.9rem 1.2rem;
+    background: #fef3c7;
+    border-radius: 3px;
+  }
+
+  .form-rest.greyed{ opacity: 0.4; }
