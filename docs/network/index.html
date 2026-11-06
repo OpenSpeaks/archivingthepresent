@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Urbanist:wght@400;700&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css?v=29">
+<link rel="stylesheet" href="/assets/style.css?v=31">
 </head>
 <body class="module-page network-page">
   <header class="masthead">
@@ -148,7 +148,7 @@
       <h2 class="group-label" id="join">Join the network</h2>
       <p>Use this form to join as a representative of a language community, an organisation, or both. It takes about five minutes.</p>
 
-      <form class="join-form" method="post" action="https://script.google.com/macros/s/AKfycbxODUDCudQumhCZx5kzHe7bTfreiZnX5uvCLMskWk5taRvMbTpTJA3pbEh7PpWc8HLNpQ/exec">
+      <form class="join-form" data-sending="Sending your request." data-failed="Your request could not be sent. Please try again, or write to hello@archivingthepresent.cc." method="post" action="https://script.google.com/macros/s/AKfycbxODUDCudQumhCZx5kzHe7bTfreiZnX5uvCLMskWk5taRvMbTpTJA3pbEh7PpWc8HLNpQ/exec">
         <fieldset>
           <legend>About you</legend>
           <div class="field">
@@ -172,7 +172,7 @@
         </fieldset>
 
         <div class="join-block" data-show="join=yes">
-          <fieldset class="field">
+          <fieldset class="field" data-pick-one="Choose at least one way to join.">
             <legend>How would you like to join? <span class="req">(required)</span></legend>
             <span class="hint">Choose one or both.</span>
             <label class="choice"><input type="checkbox" name="how" value="community"> As a representative of my language community or communities</label>
@@ -317,6 +317,6 @@
     <span class="domain">archivingthepresent.cc</span>
     <p class="colophon-credit">Cover artwork by Siddhesh Gautam, letterpress print by House of Press. Unless otherwise mentioned, site content under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY SA 4.0</a>.</p>
   </footer>
-  <script src="/assets/interactions.js?v=29" defer></script>
+  <script src="/assets/interactions.js?v=31" defer></script>
 </body>
 </html>
