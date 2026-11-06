@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Urbanist:wght@400;700&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css?v=31">
+<link rel="stylesheet" href="/assets/style.css?v=32">
 </head>
 <body class="module-page apply-page">
   <header class="masthead">
@@ -49,6 +49,17 @@
         <input type="hidden" name="test" value="yes">
         <input type="hidden" name="token" data-token>
 
+        <fieldset class="field">
+          <legend><span lang="en">Can you attend all seven days in person?</span><span lang="hi">क्या आप सातों दिन ख़ुद आकर भाग ले सकते हैं?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
+          <label class="choice"><input type="radio" name="attend" value="Yes" required> <span lang="en">Yes</span><span lang="hi">हाँ</span></label>
+          <label class="choice"><input type="radio" name="attend" value="No"> <span lang="en">No</span><span lang="hi">नहीं</span></label>
+        </fieldset>
+
+        <div class="join-block form-notice" data-show="attend=No">
+          <p><span lang="en">The summer school is an in-person event, and every participant needs to attend all seven days. We can't take part-time or online participants this time. To hear about our online activities, join the</span><span lang="hi">समर स्कूल आमने-सामने का कार्यक्रम है, और हर प्रतिभागी को सातों दिन आना होगा। इस बार हम आंशिक या ऑनलाइन प्रतिभागी नहीं ले सकते। हमारी ऑनलाइन गतिविधियों की जानकारी के लिए</span> <a href="/network/#join"><span lang="en">Archiving the Present network</span><span lang="hi">आर्काइविंग द प्रेज़ेंट नेटवर्क से जुड़ें</span></a>.</p>
+        </div>
+
+        <div class="form-rest">
         <fieldset>
           <legend><span lang="en">About you</span><span lang="hi">आपके बारे में</span></legend>
           <div class="field">
@@ -62,7 +73,8 @@
           </div>
           <div class="field">
             <label for="phone"><span lang="en">Phone or WhatsApp</span><span lang="hi">फ़ोन या व्हाट्सऐप</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+            <span class="hint" id="phone-hint"><span lang="en">A 10-digit mobile number. If you live outside India, add your country code.</span><span lang="hi">10 अंकों का मोबाइल नंबर। अगर आप भारत से बाहर रहते हैं, तो देश का कोड भी लिखें।</span></span>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="phone-hint" required>
           </div>
           <div class="field">
             <label for="occupation"><span lang="en">Occupation</span><span lang="hi">पेशा</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
@@ -190,8 +202,8 @@
           </fieldset>
           <div class="field">
             <label for="language_change"><span lang="en">How is the use of this language changing?</span><span lang="hi">इस भाषा का इस्तेमाल कैसे बदल रहा है?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
-            <span class="hint" id="language-change-hint"><span lang="en">Where is it still used (home, market, songs, rituals) and which language are people moving to? 150 words at most.</span><span lang="hi">यह अब भी कहाँ इस्तेमाल होती है (घर, बाज़ार, गीत, रीति-रिवाज), और लोग किस भाषा की ओर जा रहे हैं? ज़्यादा से ज़्यादा 150 शब्द।</span></span>
-            <textarea id="language_change" name="language_change" rows="5" aria-describedby="language-change-hint" data-max-words="150" required></textarea>
+            <span class="hint" id="language-change-hint"><span lang="en">Where is it still used (home, market, songs, rituals) and which language are people moving to? Between 30 and 150 words.</span><span lang="hi">यह अब भी कहाँ इस्तेमाल होती है (घर, बाज़ार, गीत, रीति-रिवाज), और लोग किस भाषा की ओर जा रहे हैं? 30 से 150 शब्द।</span></span>
+            <textarea id="language_change" name="language_change" data-min-words="30" rows="5" aria-describedby="language-change-hint" data-max-words="150" required></textarea>
           </div>
           <fieldset class="field">
             <legend><span lang="en">What already exists in or about this language?</span><span lang="hi">इस भाषा में या इसके बारे में पहले से क्या मौजूद है?</span></legend>
@@ -216,13 +228,13 @@
           <legend><span lang="en">Your work and plans</span><span lang="hi">आपका काम और योजनाएँ</span></legend>
           <div class="field">
             <label for="why_language"><span lang="en">Why do you want to document this language?</span><span lang="hi">आप इस भाषा का दस्तावेज़ीकरण क्यों करना चाहते हैं?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
-            <span class="hint" id="why-language-hint"><span lang="en">100 words at most.</span><span lang="hi">ज़्यादा से ज़्यादा 100 शब्द।</span></span>
-            <textarea id="why_language" name="why_language" rows="6" aria-describedby="why-language-hint" data-max-words="100" required></textarea>
+            <span class="hint" id="why-language-hint"><span lang="en">Between 40 and 100 words.</span><span lang="hi">40 से 100 शब्द।</span></span>
+            <textarea id="why_language" name="why_language" data-min-words="40" rows="6" aria-describedby="why-language-hint" data-max-words="100" required></textarea>
           </div>
           <div class="field">
             <label for="experience"><span lang="en">What documentation or other language work have you done so far?</span><span lang="hi">अब तक आपने कौन-सा दस्तावेज़ीकरण या भाषा से जुड़ा दूसरा काम किया है?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
-            <span class="hint" id="experience-hint"><span lang="en">Include informal work, such as recording elders on a phone, collecting songs, teaching the language or writing on Wikipedia. Paid, unpaid and volunteer work all count. It's fine to have none yet.</span><span lang="hi">अनौपचारिक काम भी लिखें, जैसे फ़ोन पर बुज़ुर्गों को रिकॉर्ड करना, गीत इकट्ठा करना, भाषा सिखाना या विकिपीडिया पर लिखना। पैसे वाला, बिना पैसे का और स्वयंसेवी, हर काम गिना जाता है। अभी कोई अनुभव न हो, तब भी ठीक है।</span></span>
-            <textarea id="experience" name="experience" rows="6" aria-describedby="experience-hint" required></textarea>
+            <span class="hint" id="experience-hint"><span lang="en">Include informal work, such as recording elders on a phone, collecting songs, teaching the language or writing on Wikipedia. Paid, unpaid and volunteer work all count. It's fine to have none yet: tell us that, and what you have seen or tried. Between 20 and 150 words.</span><span lang="hi">अनौपचारिक काम भी लिखें, जैसे फ़ोन पर बुज़ुर्गों को रिकॉर्ड करना, गीत इकट्ठा करना, भाषा सिखाना या विकिपीडिया पर लिखना। पैसे वाला, बिना पैसे का और स्वयंसेवी, हर काम गिना जाता है। अभी कोई अनुभव न हो, तब भी ठीक है: यह बताएँ, और यह भी कि आपने क्या देखा या आज़माया है। 20 से 150 शब्द।</span></span>
+            <textarea id="experience" name="experience" rows="6" aria-describedby="experience-hint" data-min-words="20" data-max-words="150" required></textarea>
           </div>
           <div class="field">
             <label for="fieldwork"><span lang="en">Have you recorded, interviewed or worked with speakers in their own villages or homes? Tell us where and for how long.</span><span lang="hi">क्या आपने बोलने वालों के गाँव या घर जाकर रिकॉर्डिंग, बातचीत या काम किया है? बताएँ कहाँ और कितने समय तक।</span></label>
@@ -280,8 +292,8 @@
           </fieldset>
           <div class="field">
             <label for="plans"><span lang="en">How will you use what you learn after the summer school? Who will you share it with?</span><span lang="hi">समर स्कूल के बाद आप सीखी हुई बातों का कैसे इस्तेमाल करेंगे? आप इसे किसके साथ साझा करेंगे?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
-            <span class="hint" id="plans-hint"><span lang="en">100 words at most.</span><span lang="hi">ज़्यादा से ज़्यादा 100 शब्द।</span></span>
-            <textarea id="plans" name="plans" rows="6" aria-describedby="plans-hint" data-max-words="100" required></textarea>
+            <span class="hint" id="plans-hint"><span lang="en">Between 40 and 100 words.</span><span lang="hi">40 से 100 शब्द।</span></span>
+            <textarea id="plans" name="plans" data-min-words="40" rows="6" aria-describedby="plans-hint" data-max-words="100" required></textarea>
           </div>
           <div class="field">
             <label for="hub"><span lang="en">Is there a group, organisation or community you work with that could carry this work on after the summer school? What is your role there?</span><span lang="hi">क्या कोई समूह, संस्था या समुदाय है जिसके साथ आप काम करते हैं और जो समर स्कूल के बाद यह काम आगे बढ़ा सके? वहाँ आपकी क्या भूमिका है?</span></label>
@@ -317,17 +329,8 @@
         <fieldset>
           <legend><span lang="en">Taking part</span><span lang="hi">भागीदारी</span></legend>
           <fieldset class="field">
-            <legend><span lang="en">Can you attend all seven days in person?</span><span lang="hi">क्या आप सातों दिन ख़ुद आकर भाग ले सकते हैं?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
-            <label class="choice"><input type="radio" name="attend" value="Yes" required> <span lang="en">Yes</span><span lang="hi">हाँ</span></label>
-            <label class="choice"><input type="radio" name="attend" value="No"> <span lang="en">No</span><span lang="hi">नहीं</span></label>
-          </fieldset>
-          <div class="field join-block" data-show="attend=No">
-            <label for="attend_note"><span lang="en">Tell us which days you can't attend, and why</span><span lang="hi">बताएँ कि आप किन दिनों नहीं आ सकते, और क्यों</span></label>
-            <textarea id="attend_note" name="attend_note" rows="3"></textarea>
-          </div>
-          <fieldset class="field">
             <legend><span lang="en">Can you bring a laptop?</span><span lang="hi">क्या आप लैपटॉप ला सकते हैं?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
-            <span class="hint"><span lang="en">Not having one does not count against you. We are trying to arrange laptops for those who need one, depending on availability.</span><span lang="hi">लैपटॉप न होने से आपके आवेदन पर कोई असर नहीं पड़ेगा। जिन्हें ज़रूरत है, उनके लिए हम लैपटॉप की व्यवस्था करने की कोशिश कर रहे हैं, जो उपलब्धता पर निर्भर करेगा।</span></span>
+            <span class="hint"><span lang="en">Not having one does not count against you.</span><span lang="hi">लैपटॉप न होने से आपके आवेदन पर कोई असर नहीं पड़ेगा।</span></span>
             <label class="choice"><input type="radio" name="laptop" value="Yes, my own" required> <span lang="en">Yes, my own</span><span lang="hi">हाँ, मेरा अपना</span></label>
             <label class="choice"><input type="radio" name="laptop" value="Yes, a borrowed one"> <span lang="en">Yes, a borrowed one</span><span lang="hi">हाँ, किसी से उधार लिया हुआ</span></label>
             <label class="choice"><input type="radio" name="laptop" value="No"> <span lang="en">No</span><span lang="hi">नहीं</span></label>
@@ -341,6 +344,17 @@
             <label class="choice"><input type="radio" name="laptop_os" value="Not sure"> <span lang="en">I'm not sure</span><span lang="hi">मुझे पक्का नहीं पता</span></label>
           </fieldset>
           <fieldset class="field">
+            <legend><span lang="en">Would you like to apply to receive a laptop?</span><span lang="hi">क्या आप लैपटॉप पाने के लिए आवेदन करना चाहते हैं?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
+            <span class="hint"><span lang="en">We're working with a donor to give laptops to some participants for their documentation work. How many we can give depends on the donation.</span><span lang="hi">हम एक दानदाता के साथ मिलकर कुछ प्रतिभागियों को उनके दस्तावेज़ीकरण के काम के लिए लैपटॉप देने की कोशिश कर रहे हैं। कितने लैपटॉप दे पाएँगे, यह दान पर निर्भर है।</span></span>
+            <label class="choice"><input type="radio" name="laptop_request" value="Yes" required> <span lang="en">Yes</span><span lang="hi">हाँ</span></label>
+            <label class="choice"><input type="radio" name="laptop_request" value="No"> <span lang="en">No</span><span lang="hi">नहीं</span></label>
+          </fieldset>
+          <div class="field join-block" data-show="laptop_request=Yes">
+            <label for="laptop_reason"><span lang="en">How would you use it for documentation?</span><span lang="hi">दस्तावेज़ीकरण के लिए आप इसका इस्तेमाल कैसे करेंगे?</span></label>
+            <span class="hint" id="laptop-reason-hint"><span lang="en">100 words at most.</span><span lang="hi">ज़्यादा से ज़्यादा 100 शब्द।</span></span>
+            <textarea id="laptop_reason" name="laptop_reason" rows="3" aria-describedby="laptop-reason-hint" data-max-words="100"></textarea>
+          </div>
+          <fieldset class="field">
             <legend><span lang="en">Which of these can you use for recording?</span><span lang="hi">रिकॉर्डिंग के लिए आप इनमें से किसका इस्तेमाल कर सकते हैं?</span></legend>
             <span class="hint"><span lang="en">Choose all that apply.</span><span lang="hi">जो भी लागू हो, सब चुनें।</span></span>
             <label class="choice"><input type="checkbox" name="devices" value="Smartphone"> <span lang="en">A smartphone</span><span lang="hi">स्मार्टफ़ोन</span></label>
@@ -349,9 +363,14 @@
             <label class="choice"><input type="checkbox" name="devices" value="External microphone"> <span lang="en">An external microphone</span><span lang="hi">बाहरी माइक्रोफ़ोन</span></label>
             <label class="choice"><input type="checkbox" name="devices" value="None"> <span lang="en">None of these</span><span lang="hi">इनमें से कोई नहीं</span></label>
           </fieldset>
+          <fieldset class="field">
+            <legend><span lang="en">Food preference</span><span lang="hi">खाने की पसंद</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
+            <label class="choice"><input type="radio" name="food" value="Egg, meat, fish and seafood" required> <span lang="en">Egg, meat, fish and seafood</span><span lang="hi">अंडा, मांस, मछली और सी-फ़ूड</span></label>
+            <label class="choice"><input type="radio" name="food" value="Vegetarian, with milk and dairy"> <span lang="en">Vegetarian, with milk and dairy</span><span lang="hi">शाकाहारी, दूध और डेयरी के साथ</span></label>
+          </fieldset>
           <div class="field">
             <label for="access"><span lang="en">Is there anything we should arrange so you can take part fully?</span><span lang="hi">क्या कोई ऐसी व्यवस्था है जो हमें करनी चाहिए ताकि आप पूरी तरह भाग ले सकें?</span></label>
-            <span class="hint" id="access-hint"><span lang="en">For example access needs or food needs.</span><span lang="hi">जैसे सुगम्यता से जुड़ी ज़रूरतें या खाने से जुड़ी ज़रूरतें।</span></span>
+            <span class="hint" id="access-hint"><span lang="en">For example access needs, or a food need not covered above.</span><span lang="hi">जैसे सुगम्यता से जुड़ी ज़रूरतें, या खाने से जुड़ी कोई ज़रूरत जो ऊपर नहीं है।</span></span>
             <textarea id="access" name="access" rows="3" aria-describedby="access-hint"></textarea>
           </div>
           <fieldset class="field">
@@ -366,6 +385,11 @@
             <input id="heard" name="heard" type="text">
           </div>
         </fieldset>
+
+        <div class="form-notice repeat-check" hidden>
+          <p><span lang="en">An application has already been sent from this device or with this email address. If you are sending a second, separate application, for example for someone who shares your phone or computer, tick the box below.</span><span lang="hi">इस डिवाइस से या इस ईमेल पते से एक आवेदन पहले ही भेजा जा चुका है। अगर आप एक अलग, दूसरा आवेदन भेज रहे हैं, जैसे किसी ऐसे व्यक्ति के लिए जो आपका फ़ोन या कंप्यूटर इस्तेमाल करता है, तो नीचे दिए बॉक्स पर टिक करें।</span></p>
+          <label class="choice"><input type="checkbox" name="confirm_repeat" value="yes"> <span lang="en">Yes, this is a separate application, and I want to send it.</span><span lang="hi">हाँ, यह एक अलग आवेदन है, और मैं इसे भेजना चाहता/चाहती हूँ।</span></label>
+        </div>
 
         <fieldset class="terms">
           <legend><span lang="en">How we use your details</span><span lang="hi">हम आपकी जानकारी का इस्तेमाल कैसे करते हैं</span></legend>
@@ -384,6 +408,7 @@
 
         <button class="cta-btn primary" type="submit"><span lang="en">Send my application</span><span lang="hi">मेरा आवेदन भेजें</span></button>
         <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
       </form>
 
       <div class="join-thanks" hidden tabindex="-1">
@@ -398,6 +423,6 @@
     <span class="domain">archivingthepresent.cc</span>
     <p class="colophon-credit">Cover artwork by Siddhesh Gautam, letterpress print by House of Press. Unless otherwise mentioned, site content under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY SA 4.0</a>.</p>
   </footer>
-  <script src="/assets/interactions.js?v=31" defer></script>
+  <script src="/assets/interactions.js?v=32" defer></script>
 </body>
 </html>
