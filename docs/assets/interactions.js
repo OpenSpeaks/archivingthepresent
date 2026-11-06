@@ -124,9 +124,11 @@ if (joinForm) {
 
   function updateJoinForm() {
     blocks.forEach(function (block) {
-      var rule = block.getAttribute("data-show").split("=");
-      var match = joinForm.querySelector("[name=" + rule[0] + "][value=" + rule[1] + "], [name=" + rule[0] + "] [value=" + rule[1] + "]");
-      block.hidden = !(match.checked || match.selected);
+      block.hidden = !block.getAttribute("data-show").split("&").every(function (rule) {
+        rule = rule.split("=");
+        var match = joinForm.querySelector("[name=" + rule[0] + "][value=" + rule[1] + "], [name=" + rule[0] + "] [value=" + rule[1] + "]");
+        return match.checked || match.selected;
+      });
     });
     joinForm.querySelectorAll("input, textarea, select").forEach(function (c) {
       if (c.name !== "website") c.disabled = !!c.closest(".join-block[hidden]");
@@ -162,7 +164,12 @@ if (joinForm) {
       ? "कृपया 10 अंकों का सही मोबाइल नंबर लिखें। भारत से बाहर हों तो देश का कोड जोड़ें।"
       : "Please enter a valid 10-digit mobile number. Outside India, add your country code.");
   }
-  if (phone) phone.addEventListener("input", checkPhone);
+  if (phone) {
+    phone.addEventListener("input", function () {
+      phone.value = phone.value.replace(/[^\d+\s()-]/g, "");
+      checkPhone();
+    });
+  }
 
   var repeatCheck = joinForm.querySelector(".repeat-check");
   function askRepeat() {
@@ -188,7 +195,6 @@ if (joinForm) {
     var button = joinForm.querySelector("[type=submit]");
     var data = new URLSearchParams(new FormData(joinForm));
     data.append("via", "fetch");
-    data.append("ui_lang", hi ? "hi" : "en");
     data.append("ui_lang", hi ? "hi" : "en");
     data.append("timezone", Intl.DateTimeFormat().resolvedOptions().timeZone || "");
     status.textContent = joinForm.dataset[hi ? "sendingHi" : "sending"];
@@ -427,4 +433,52 @@ if (mainLanguage) {
     addLanguage();
   }, addLanguage);
   document.querySelector(".add-language").addEventListener("click", addLanguage);
+}
+
+// assets/airports.csv is from OurAirports (public domain), Indian airports with scheduled flights
+var airportSelect = document.getElementById("airport");
+if (airportSelect) {
+  var stateSelect = document.getElementById("state");
+  var airports = fetch("/assets/airports.csv")
+    .then(function (r) { return r.text(); })
+    .then(function (text) {
+      return parseCsvRows(text).slice(1).filter(function (row) { return row[0]; });
+    });
+
+  var listAirports = function () {
+    airports.then(function (rows) {
+      var chosen = airportSelect.value;
+      var state = stateSelect.value;
+      var stateName = stateSelect.selectedOptions[0].textContent;
+      var hi = isHindi();
+      var home = rows.filter(function (row) { return row[3] === state; });
+      var groups = home.length
+        ? [[hi ? stateName + " में" : "In " + stateName, home, ""],
+           [hi ? "दूसरे हवाई अड्डे" : "Other airports", rows.filter(function (row) { return row[3] !== state; }), "elsewhere"]]
+        : [[hi ? "सभी हवाई अड्डे" : "All airports", rows, ""]];
+
+      airportSelect.querySelectorAll("optgroup").forEach(function (g) { g.remove(); });
+      var notListed = airportSelect.querySelector("[value=Other]");
+      groups.forEach(function (group) {
+        var optgroup = document.createElement("optgroup");
+        optgroup.label = group[0];
+        group[1].forEach(function (row) {
+          var option = document.createElement("option");
+          option.value = row[1] + " (" + row[0] + "), " + row[2];
+          option.textContent = row[1] + ": " + row[2] + " (" + row[0] + ")";
+          if (group[2]) option.className = group[2];
+          optgroup.appendChild(option);
+        });
+        airportSelect.insertBefore(optgroup, notListed);
+      });
+      airportSelect.value = chosen;
+      if (airportSelect.selectedIndex < 0) airportSelect.value = "";
+    });
+  };
+
+  stateSelect.addEventListener("change", listAirports);
+  document.querySelectorAll(".lang-switch button").forEach(function (btn) {
+    btn.addEventListener("click", listAirports);
+  });
+  listAirports();
 }

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Urbanist:wght@400;700&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css?v=33">
+<link rel="stylesheet" href="/assets/style.css?v=35">
 </head>
 <body class="module-page apply-page">
   <header class="masthead">
@@ -75,7 +75,7 @@
           <div class="field">
             <label for="phone"><span lang="en">Phone or WhatsApp</span><span lang="hi">फ़ोन या व्हाट्सऐप</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
             <span class="hint" id="phone-hint"><span lang="en">A 10-digit mobile number. If you live outside India, add your country code.</span><span lang="hi">10 अंकों का मोबाइल नंबर। अगर आप भारत से बाहर रहते हैं, तो देश का कोड भी लिखें।</span></span>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="phone-hint" required>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="phone-hint" maxlength="20" required>
           </div>
           <div class="field">
             <label for="occupation"><span lang="en">Occupation</span><span lang="hi">पेशा</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
@@ -101,12 +101,54 @@
         </fieldset>
 
         <fieldset>
-          <legend><span lang="en">Where you live</span><span lang="hi">आप कहाँ रहते हैं</span></legend>
+          <legend><span lang="en">Where you live and how you would travel</span><span lang="hi">आप कहाँ रहते हैं और कैसे आएँगे</span></legend>
           <fieldset class="field">
             <legend><span lang="en">Country</span><span lang="hi">देश</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
             <label class="choice"><input type="radio" name="region" value="india" required> <span lang="en">India</span><span lang="hi">भारत</span></label>
             <label class="choice"><input type="radio" name="region" value="south-asia"> <span lang="en">Another country in South Asia</span><span lang="hi">दक्षिण एशिया का कोई और देश</span></label>
           </fieldset>
+          <div class="field join-block" data-show="region=india">
+            <label for="state"><span lang="en">State or union territory</span><span lang="hi">राज्य या केंद्र शासित प्रदेश</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
+            <select id="state" name="state" data-required>
+              <option value="" data-hi="एक चुनें">Choose one</option>
+              <option value="Andaman and Nicobar Islands" data-hi="अंडमान और निकोबार द्वीपसमूह">Andaman and Nicobar Islands</option>
+              <option value="Andhra Pradesh" data-hi="आंध्र प्रदेश">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh" data-hi="अरुणाचल प्रदेश">Arunachal Pradesh</option>
+              <option value="Assam" data-hi="असम">Assam</option>
+              <option value="Bihar" data-hi="बिहार">Bihar</option>
+              <option value="Chandigarh" data-hi="चंडीगढ़">Chandigarh</option>
+              <option value="Chhattisgarh" data-hi="छत्तीसगढ़">Chhattisgarh</option>
+              <option value="Dadra and Nagar Haveli and Daman and Diu" data-hi="दादरा और नगर हवेली और दमन और दीव">Dadra and Nagar Haveli and Daman and Diu</option>
+              <option value="Delhi" data-hi="दिल्ली">Delhi</option>
+              <option value="Goa" data-hi="गोवा">Goa</option>
+              <option value="Gujarat" data-hi="गुजरात">Gujarat</option>
+              <option value="Haryana" data-hi="हरियाणा">Haryana</option>
+              <option value="Himachal Pradesh" data-hi="हिमाचल प्रदेश">Himachal Pradesh</option>
+              <option value="Jammu and Kashmir" data-hi="जम्मू और कश्मीर">Jammu and Kashmir</option>
+              <option value="Jharkhand" data-hi="झारखंड">Jharkhand</option>
+              <option value="Karnataka" data-hi="कर्नाटक">Karnataka</option>
+              <option value="Kerala" data-hi="केरल">Kerala</option>
+              <option value="Ladakh" data-hi="लद्दाख">Ladakh</option>
+              <option value="Lakshadweep" data-hi="लक्षद्वीप">Lakshadweep</option>
+              <option value="Madhya Pradesh" data-hi="मध्य प्रदेश">Madhya Pradesh</option>
+              <option value="Maharashtra" data-hi="महाराष्ट्र">Maharashtra</option>
+              <option value="Manipur" data-hi="मणिपुर">Manipur</option>
+              <option value="Meghalaya" data-hi="मेघालय">Meghalaya</option>
+              <option value="Mizoram" data-hi="मिज़ोरम">Mizoram</option>
+              <option value="Nagaland" data-hi="नागालैंड">Nagaland</option>
+              <option value="Odisha" data-hi="ओडिशा">Odisha</option>
+              <option value="Puducherry" data-hi="पुडुचेरी">Puducherry</option>
+              <option value="Punjab" data-hi="पंजाब">Punjab</option>
+              <option value="Rajasthan" data-hi="राजस्थान">Rajasthan</option>
+              <option value="Sikkim" data-hi="सिक्किम">Sikkim</option>
+              <option value="Tamil Nadu" data-hi="तमिलनाडु">Tamil Nadu</option>
+              <option value="Telangana" data-hi="तेलंगाना">Telangana</option>
+              <option value="Tripura" data-hi="त्रिपुरा">Tripura</option>
+              <option value="Uttar Pradesh" data-hi="उत्तर प्रदेश">Uttar Pradesh</option>
+              <option value="Uttarakhand" data-hi="उत्तराखंड">Uttarakhand</option>
+              <option value="West Bengal" data-hi="पश्चिम बंगाल">West Bengal</option>
+            </select>
+          </div>
           <fieldset class="field join-block" data-show="region=south-asia">
             <legend><span lang="en">Which country?</span><span lang="hi">कौन-सा देश?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
             <label class="choice"><input type="radio" name="country" value="Afghanistan" data-required> <span lang="en">Afghanistan</span><span lang="hi">अफ़ग़ानिस्तान</span></label>
@@ -127,6 +169,33 @@
           <div class="field">
             <label for="place"><span lang="en">Town or village, district and state or province you would travel from</span><span lang="hi">वह कस्बा या गाँव, ज़िला और राज्य या प्रांत जहाँ से आप यात्रा करेंगे</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
             <input id="place" name="place" type="text" required>
+          </div>
+          <fieldset class="field">
+            <legend><span lang="en">How would you travel to Bangalore?</span><span lang="hi">आप बेंगलुरु कैसे आएँगे?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></legend>
+            <span class="hint"><span lang="en">We pay for train or bus tickets. We book a flight only when the train or bus journey to Bangalore takes more than 13 hours.</span><span lang="hi">हम ट्रेन या बस टिकट का ख़र्च देते हैं। हवाई टिकट हम तभी बुक करते हैं जब बेंगलुरु तक ट्रेन या बस का सफ़र 13 घंटे से ज़्यादा का हो।</span></span>
+            <label class="choice"><input type="radio" name="travel" value="Train" required> <span lang="en">Train</span><span lang="hi">ट्रेन</span></label>
+            <label class="choice"><input type="radio" name="travel" value="Bus"> <span lang="en">Bus</span><span lang="hi">बस</span></label>
+            <label class="choice"><input type="radio" name="travel" value="Flight"> <span lang="en">Flight</span><span lang="hi">हवाई जहाज़</span></label>
+          </fieldset>
+          <div class="join-block form-notice" data-show="travel=Flight">
+            <p><strong><span lang="en">Flights are only for journeys of more than 13 hours by train or bus.</span><span lang="hi">हवाई टिकट सिर्फ़ उन्हीं के लिए है जिनका ट्रेन या बस का सफ़र 13 घंटे से ज़्यादा का है।</span></strong> <span lang="en">If your train or bus journey to Bangalore is shorter, please choose Train or Bus above.</span><span lang="hi">अगर बेंगलुरु तक आपका ट्रेन या बस का सफ़र इससे छोटा है, तो ऊपर ट्रेन या बस चुनें।</span></p>
+            <label class="choice"><input type="checkbox" name="over_13_hours" value="Yes" data-required> <span><span lang="en">My train or bus journey to Bangalore would take more than 13 hours.</span><span lang="hi">बेंगलुरु तक मेरा ट्रेन या बस का सफ़र 13 घंटे से ज़्यादा का होगा।</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></span></label>
+          </div>
+          <div class="field join-block" data-show="travel=Flight&amp;region=india">
+            <label for="airport"><span lang="en">Airport you would fly from</span><span lang="hi">वह हवाई अड्डा जहाँ से आप उड़ान लेंगे</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
+            <span class="hint" id="airport-hint"><span lang="en">Airports in your state come first. All other airports follow, in grey.</span><span lang="hi">आपके राज्य के हवाई अड्डे पहले दिखते हैं। बाकी सभी हवाई अड्डे उसके बाद, स्लेटी रंग में।</span></span>
+            <select id="airport" name="airport" aria-describedby="airport-hint" data-required>
+              <option value="" data-hi="एक चुनें">Choose one</option>
+              <option value="Other" data-hi="मेरा हवाई अड्डा सूची में नहीं है">My airport isn't in the list</option>
+            </select>
+          </div>
+          <div class="field join-block" data-show="airport=Other&amp;travel=Flight&amp;region=india">
+            <label for="airport_other"><span lang="en">Which airport?</span><span lang="hi">कौन-सा हवाई अड्डा?</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
+            <input id="airport_other" name="airport_other" type="text" data-required>
+          </div>
+          <div class="field join-block" data-show="travel=Flight&amp;region=south-asia">
+            <label for="airport_abroad"><span lang="en">Airport you would fly from</span><span lang="hi">वह हवाई अड्डा जहाँ से आप उड़ान लेंगे</span> <span class="req">(<span lang="en">required</span><span lang="hi">ज़रूरी</span>)</span></label>
+            <input id="airport_abroad" name="airport_other" type="text" data-required>
           </div>
         </fieldset>
 
@@ -426,6 +495,6 @@
     <span class="domain">archivingthepresent.cc</span>
     <p class="colophon-credit">Cover artwork by Siddhesh Gautam, letterpress print by House of Press. Unless otherwise mentioned, site content under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY SA 4.0</a>.</p>
   </footer>
-  <script src="/assets/interactions.js?v=33" defer></script>
+  <script src="/assets/interactions.js?v=35" defer></script>
 </body>
 </html>

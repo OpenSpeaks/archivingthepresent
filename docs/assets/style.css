@@ -1442,3 +1442,5 @@
   }
 
   .form-rest.greyed{ opacity: 0.4; }
+
+  .join-form option.elsewhere{ color: #5f5f5f; }
