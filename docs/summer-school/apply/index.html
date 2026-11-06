@@ -228,6 +228,16 @@
             <label for="fieldwork"><span lang="en">Have you recorded, interviewed or worked with speakers in their own villages or homes? Tell us where and for how long.</span><span lang="hi">क्या आपने बोलने वालों के गाँव या घर जाकर रिकॉर्डिंग, बातचीत या काम किया है? बताएँ कहाँ और कितने समय तक।</span></label>
             <textarea id="fieldwork" name="fieldwork" rows="4"></textarea>
           </div>
+          <fieldset class="field">
+            <legend><span lang="en">Which of these can you already do?</span><span lang="hi">इनमें से आप पहले से क्या कर सकते हैं?</span></legend>
+            <span class="hint"><span lang="en">Choose all that apply. None of these is needed to apply.</span><span lang="hi">जो भी लागू हो, सब चुनें। आवेदन के लिए इनमें से कुछ भी ज़रूरी नहीं है।</span></span>
+            <label class="choice"><input type="checkbox" name="can_do" value="Transcribe speech in the language's script or IPA"> <span lang="en">Transcribe speech in the language's script or in IPA</span><span lang="hi">भाषा की लिपि में या IPA में बोली गई बात को लिखना</span></label>
+            <label class="choice"><input type="checkbox" name="can_do" value="Use annotation software such as ELAN"> <span lang="en">Use annotation software such as ELAN</span><span lang="hi">ELAN जैसे एनोटेशन सॉफ़्टवेयर का इस्तेमाल करना</span></label>
+            <label class="choice"><input type="checkbox" name="can_do" value="Organise and back up files and folders"> <span lang="en">Organise files and folders, and back them up</span><span lang="hi">फ़ाइलें और फ़ोल्डर व्यवस्थित करना, और उनका बैकअप रखना</span></label>
+            <label class="choice"><input type="checkbox" name="can_do" value="Use a spreadsheet"> <span lang="en">Use a spreadsheet</span><span lang="hi">स्प्रेडशीट का इस्तेमाल करना</span></label>
+            <label class="choice"><input type="checkbox" name="can_do" value="Install software on a computer"> <span lang="en">Install software on a computer</span><span lang="hi">कंप्यूटर पर सॉफ़्टवेयर इंस्टॉल करना</span></label>
+            <label class="choice"><input type="checkbox" name="can_do" value="None of these yet"> <span lang="en">None of these yet</span><span lang="hi">अभी इनमें से कुछ नहीं</span></label>
+          </fieldset>
           <div class="field">
             <label for="work_link"><span lang="en">A link to something you have recorded, written or made, if you have one</span><span lang="hi">आपकी की गई किसी रिकॉर्डिंग, लेख या काम का लिंक, अगर हो</span></label>
             <span class="hint" id="work-link-hint"><span lang="en">Only share recordings that the people in them have agreed to share.</span><span lang="hi">सिर्फ़ वही रिकॉर्डिंग भेजें जिन्हें साझा करने के लिए उनमें मौजूद लोगों ने सहमति दी है।</span></span>
@@ -274,6 +284,19 @@
             <textarea id="plans" name="plans" rows="6" aria-describedby="plans-hint" data-max-words="100" required></textarea>
           </div>
           <div class="field">
+            <label for="hub"><span lang="en">Is there a group, organisation or community you work with that could carry this work on after the summer school? What is your role there?</span><span lang="hi">क्या कोई समूह, संस्था या समुदाय है जिसके साथ आप काम करते हैं और जो समर स्कूल के बाद यह काम आगे बढ़ा सके? वहाँ आपकी क्या भूमिका है?</span></label>
+            <span class="hint" id="hub-hint"><span lang="en">100 words at most.</span><span lang="hi">ज़्यादा से ज़्यादा 100 शब्द।</span></span>
+            <textarea id="hub" name="hub" rows="4" aria-describedby="hub-hint" data-max-words="100"></textarea>
+          </div>
+          <fieldset class="field">
+            <legend><span lang="en">Do you plan to apply for funding for a documentation project in the next two years, for example from ELDP?</span><span lang="hi">क्या आप अगले दो साल में किसी दस्तावेज़ीकरण परियोजना के लिए धन (फ़ंडिंग) के लिए आवेदन करने की योजना बना रहे हैं, जैसे ELDP से?</span></legend>
+            <label class="choice"><input type="radio" name="funding_plan" value="Yes"> <span lang="en">Yes</span><span lang="hi">हाँ</span></label>
+            <label class="choice"><input type="radio" name="funding_plan" value="Maybe"> <span lang="en">Maybe</span><span lang="hi">शायद</span></label>
+            <label class="choice"><input type="radio" name="funding_plan" value="No"> <span lang="en">No</span><span lang="hi">नहीं</span></label>
+            <label class="other" for="funding_detail"><span lang="en">Tell us more, if you like</span><span lang="hi">चाहें तो और बताएँ</span></label>
+            <input id="funding_detail" name="funding_detail" type="text">
+          </fieldset>
+          <div class="field">
             <label for="education"><span lang="en">Education or training, if any</span><span lang="hi">शिक्षा या प्रशिक्षण, अगर हो</span></label>
             <span class="hint" id="education-hint"><span lang="en">List degrees, diplomas or courses with the year and place. You don't need a degree to apply.</span><span lang="hi">डिग्री, डिप्लोमा या कोर्स, साल और जगह के साथ लिखें। आवेदन के लिए डिग्री ज़रूरी नहीं है।</span></span>
             <textarea id="education" name="education" rows="3" aria-describedby="education-hint"></textarea>
@@ -308,6 +331,14 @@
             <label class="choice"><input type="radio" name="laptop" value="Yes, my own" required> <span lang="en">Yes, my own</span><span lang="hi">हाँ, मेरा अपना</span></label>
             <label class="choice"><input type="radio" name="laptop" value="Yes, a borrowed one"> <span lang="en">Yes, a borrowed one</span><span lang="hi">हाँ, किसी से उधार लिया हुआ</span></label>
             <label class="choice"><input type="radio" name="laptop" value="No"> <span lang="en">No</span><span lang="hi">नहीं</span></label>
+          </fieldset>
+          <fieldset class="field">
+            <legend><span lang="en">If you can bring a laptop, which system does it run?</span><span lang="hi">अगर आप लैपटॉप ला सकते हैं, तो उसमें कौन-सा सिस्टम चलता है?</span></legend>
+            <label class="choice"><input type="radio" name="laptop_os" value="Windows"> <span lang="en">Windows</span><span lang="hi">विंडोज़</span></label>
+            <label class="choice"><input type="radio" name="laptop_os" value="macOS"> <span lang="en">macOS</span><span lang="hi">macOS</span></label>
+            <label class="choice"><input type="radio" name="laptop_os" value="Linux"> <span lang="en">Linux</span><span lang="hi">लिनक्स</span></label>
+            <label class="choice"><input type="radio" name="laptop_os" value="ChromeOS"> <span lang="en">ChromeOS</span><span lang="hi">ChromeOS</span></label>
+            <label class="choice"><input type="radio" name="laptop_os" value="Not sure"> <span lang="en">I'm not sure</span><span lang="hi">मुझे पक्का नहीं पता</span></label>
           </fieldset>
           <fieldset class="field">
             <legend><span lang="en">Which of these can you use for recording?</span><span lang="hi">रिकॉर्डिंग के लिए आप इनमें से किसका इस्तेमाल कर सकते हैं?</span></legend>
