@@ -296,7 +296,7 @@ var languages = null;
 
 function loadLanguages() {
   if (!languages) {
-    languages = fetch("/assets/languages.csv?v=3")
+    languages = fetch("/assets/languages.csv?v=4")
       .then(function (r) { return r.text(); })
       .then(function (text) {
         var seen = {};
