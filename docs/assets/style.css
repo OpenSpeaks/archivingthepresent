@@ -196,6 +196,7 @@
   .tabs a[href="/network/"],    #network       { --band: #e9d5ff; }
   .tabs a[href="/#opportunities"], #opportunities { --band: #fbcfe8; }
   .tabs a[href="/#news"],        #news          { --band: #ddd6fe; }
+  .tabs a[href="/tech/"],        #tech          { --band: #bae6fd; }
 
   .tabs a[aria-current="page"],
   body:has(#learn:target) .tabs a[href="/#learn"],
@@ -1579,3 +1580,36 @@
   .share-btn:focus-visible{ outline: 3px solid var(--ink-red); outline-offset: 2px; }
   button.share-btn.copy-id{ border: 1.5px solid var(--ink-blue); color: var(--ink-blue); }
   button.share-btn.copy-id.copied{ border-color: var(--ink-red); color: var(--ink-red); }
+
+  /* Tech page */
+
+  .tech-page .tool{ margin: 0 0 3.5rem; }
+  .tech-page .tool h2{ font-size: 1.5rem; margin: 0 0 0.4rem; text-align: left; }
+  .tool-what{ font-family: "Poppins", sans-serif; font-weight: 600; color: var(--ink-dark); }
+  .tool-note{
+    padding: 0.9rem 1.1rem;
+    background: #fef3c7;
+    border-left: 4px solid var(--ink-dark);
+  }
+  .tool-links{
+    padding: 1rem 1.25rem;
+    background: var(--band, #bae6fd);
+    border-radius: 3px;
+  }
+  .tool-links a{ color: var(--ink-dark); }
+  .tool-url{
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    overflow-wrap: anywhere;
+  }
+  .tech-page .tool img{
+    display: block;
+    width: 100%;
+    max-width: 43rem;
+    height: auto;
+    margin-top: 1.25rem;
+    border: 1px solid #d8d2c6;
+  }
