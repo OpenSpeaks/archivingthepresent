@@ -756,7 +756,9 @@
      a masthead in between the two left-aligned bands. */
   .module-page .breadcrumb{ text-align: left; }
 
-  .breadcrumb:hover{ color: var(--ink-red); }
+  a.breadcrumb:hover, .breadcrumb a:hover{ color: var(--ink-red); }
+  .breadcrumb a{ color: inherit; }
+  .breadcrumb [aria-hidden]{ margin: 0 0.35rem; }
 
   .modules.linked li{
     cursor: default;
