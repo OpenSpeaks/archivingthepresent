@@ -326,6 +326,47 @@
     margin: 0 auto 2.6rem;
   }
 
+  /* Summer school call */
+  .call-band{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: min(100%, 34rem);
+    margin-bottom: 2.4rem;
+    padding: 1.1rem 1.5rem 1.2rem;
+    background: var(--print-blue);
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 1.05rem;
+  }
+
+  .call-band .call-title{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 1.45rem;
+    line-height: 1.2;
+  }
+
+  .call-band .call-go{
+    align-self: center;
+    margin-top: 0.6rem;
+    padding: 0.5rem 1.2rem;
+    background: #fff;
+    color: var(--print-blue);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    border-radius: 3px;
+  }
+
+  .call-band:hover{ background: var(--text-blue); }
+  .call-band:hover .call-go{ color: var(--text-blue); }
+
+  .call-band:focus-visible{
+    outline: 3px solid var(--ink-red);
+    outline-offset: 3px;
+  }
+
   .cta-btn{
     display: inline-block;
     font-family: "Poppins", sans-serif;
