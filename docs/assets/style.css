@@ -1478,3 +1478,33 @@
   .join-form .phone-row #phone_code{ flex: none; width: 5.5rem; }
   .join-form .family-found{ margin: 0.5rem 0 0; }
   .join-form .family-found[hidden]{ display: none; }
+
+  /* Share buttons */
+
+  .event-main .share-lang{ margin: 1.2rem 0 0.5rem; font-size: 1rem; }
+  .share-list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  .share-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 44px;
+    padding: 0 0.85rem;
+    font: 500 0.9rem "Inter", sans-serif;
+    color: var(--ink-blue);
+    background: transparent;
+    border: 1.5px solid var(--ink-blue);
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .share-btn:hover{ background: rgba(18,57,92,0.08); }
+  .share-btn:focus-visible{ outline: 3px solid var(--ink-red); outline-offset: 2px; }
+  button.share-btn.copy-id{ border: 1.5px solid var(--ink-blue); color: var(--ink-blue); }
+  button.share-btn.copy-id.copied{ border-color: var(--ink-red); color: var(--ink-red); }
