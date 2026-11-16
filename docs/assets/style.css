@@ -935,6 +935,8 @@
     word-break: break-word;
   }
 
+  #opportunities .book-lead{ margin-top: 0; }
+
   #manual-full .book-lead{
     font-family: var(--font-serif);
     font-size: 1.02rem;
@@ -1514,6 +1516,18 @@
   .partner-logos img{ display: block; height: 2.75rem; width: auto; }
   .partner-logos img.seal{ height: 4rem; }
   .partner-logos a{ display: block; border-radius: 3px; }
+  .partner-logos img.tall{ height: 4.5rem; }
+
+  .sponsor-note{
+    margin: 2.5rem 0 0;
+    padding: 1rem 1.25rem;
+    background: #a7f3d0;
+    border-radius: 3px;
+    color: var(--ink-dark);
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .sponsor-note a{ color: inherit; }
 
   .event-list{
     margin: 0 0 2.5rem;
