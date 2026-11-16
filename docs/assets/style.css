@@ -1501,6 +1501,20 @@
   .event-main h2:first-child{ margin-top: 0; }
   .event-main p{ line-height: 1.6; }
 
+  .partner-logos{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem 2.25rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .partner-logos img{ display: block; height: 2.75rem; width: auto; }
+  .partner-logos img.seal{ height: 4rem; }
+  .partner-logos a{ display: block; border-radius: 3px; }
+
   .event-list{
     margin: 0 0 2.5rem;
     padding: 0;
