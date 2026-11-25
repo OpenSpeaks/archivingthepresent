@@ -81,6 +81,8 @@ document.querySelectorAll("[data-toc]").forEach(function (scope) {
     h.appendChild(tools);
   });
 
+  // data-toc="links" keeps the section links but no side list
+  if (scope.getAttribute("data-toc") === "links") return;
   scope.parentNode.insertBefore(nav, scope);
 
   var offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
