@@ -1,11 +1,15 @@
-document.querySelectorAll(".copy-id").forEach(function (btn) {
+function copyOnClick(btn) {
   btn.addEventListener("click", function () {
     navigator.clipboard.writeText(btn.getAttribute("data-copy")).then(function () {
       btn.classList.add("copied");
       setTimeout(function () { btn.classList.remove("copied"); }, 1200);
     });
   });
-});
+}
+document.querySelectorAll(".copy-id").forEach(copyOnClick);
+
+var linkIcon = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>';
+var copyIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
 
 document.querySelectorAll(".citation-block").forEach(function (block) {
   var citations = JSON.parse(block.getAttribute("data-citation"));
@@ -65,6 +69,16 @@ document.querySelectorAll("[data-toc]").forEach(function (scope) {
     li.appendChild(a);
     list.appendChild(li);
     links.push(a);
+
+    // github-style section links,shown on hover or focus
+    var tools = document.createElement("span");
+    tools.className = "heading-tools";
+    tools.innerHTML = '<a class="heading-link" href="#' + h.id + '" aria-label="Link to this section">' + linkIcon + '</a>' +
+      '<button type="button" class="copy-id copy-icon-btn" aria-label="Copy link to this section">' + copyIcon + '</button>';
+    var btn = tools.querySelector("button");
+    btn.setAttribute("data-copy", location.origin + location.pathname + "#" + h.id);
+    copyOnClick(btn);
+    h.appendChild(tools);
   });
 
   scope.parentNode.insertBefore(nav, scope);

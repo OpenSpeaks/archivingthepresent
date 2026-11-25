@@ -927,6 +927,36 @@
   /* Multi-line SRT/subtitle examples - same monospace treatment as
      the citation block's .citation-text, scaled to this narrower
      reading column. */
+  /* Section links */
+  .heading-tools{
+    display: inline-flex;
+    gap: 0.2rem;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    opacity: 0;
+  }
+  h2:hover .heading-tools,
+  h3:hover .heading-tools,
+  h4:hover .heading-tools,
+  .heading-tools:focus-within{
+    opacity: 1;
+  }
+  @media (hover: none){
+    .heading-tools{ opacity: 1; }
+  }
+  .heading-link{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+    color: var(--ink-blue);
+  }
+  .heading-tools button.copy-icon-btn{
+    min-width: 24px;
+    min-height: 24px;
+  }
+
   /* Guide examples */
   .module-page .appendix-excerpt .guide-example{
     border-left: 3px solid var(--ink-blue);
