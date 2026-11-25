@@ -880,6 +880,10 @@
     border-bottom: 1px solid rgba(43,38,32,0.16);
   }
 
+  .module-page .appendix-excerpt code{
+    overflow-wrap: anywhere;
+  }
+
   .module-page .appendix-excerpt .rate-table thead th{
     font-weight: 600;
     border-bottom-color: rgba(43,38,32,0.5);
