@@ -7,6 +7,7 @@
 // Usage:
 //   node scripts/mint-id.js module "Planning before documenting"
 //   node scripts/mint-id.js module "Planning before documenting" --write
+//   node scripts/mint-id.js guide "Moving media to a computer"
 import { existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -53,7 +54,7 @@ function main() {
 
   if (!kindArg || !KIND_CONFIG[kindArg] || !titleArg) {
     console.error(
-      'Usage: node scripts/mint-id.js module "Module title" [--write]'
+      'Usage: node scripts/mint-id.js module|appendix|guide "Title" [--write]'
     );
     process.exit(1);
   }
