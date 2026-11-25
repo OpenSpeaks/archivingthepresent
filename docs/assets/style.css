@@ -957,6 +957,25 @@
     min-height: 24px;
   }
 
+  /* Guide screenshots */
+  .module-page .appendix-excerpt .guide-shot{
+    margin: 0 0 1.6rem;
+  }
+  .module-page .appendix-excerpt .guide-shot img{
+    display: block;
+    width: 100%;
+    max-width: 43rem;
+    height: auto;
+    border: 1px solid #d8d2c6;
+  }
+  .module-page .appendix-excerpt .guide-shot.narrow img{
+    max-width: 22rem;
+  }
+  .module-page .appendix-excerpt .guide-shot figcaption{
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+  }
+
   /* Guide examples */
   .module-page .appendix-excerpt .guide-example{
     border-left: 3px solid var(--ink-blue);
