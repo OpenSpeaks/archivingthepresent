@@ -927,6 +927,18 @@
   /* Multi-line SRT/subtitle examples - same monospace treatment as
      the citation block's .citation-text, scaled to this narrower
      reading column. */
+  /* Guide examples */
+  .module-page .appendix-excerpt .guide-example{
+    border-left: 3px solid var(--ink-blue);
+    padding: 0.1rem 0 0.1rem 1rem;
+    margin: 0 0 1.6rem;
+  }
+  .module-page .appendix-excerpt .guide-example .example-label{
+    font-weight: 600;
+    color: var(--ink-blue);
+    margin-bottom: 0.3rem;
+  }
+
   .module-page .appendix-excerpt pre.srt-example{
     font-family: var(--font-mono);
     font-size: 0.85rem;

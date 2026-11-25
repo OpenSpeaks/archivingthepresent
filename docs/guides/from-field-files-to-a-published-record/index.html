@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Urbanist:wght@400;700&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css?v=50">
+<link rel="stylesheet" href="/assets/style.css?v=51">
 </head>
 <body class="module-page">
   <header class="masthead">
@@ -46,40 +46,33 @@
       <p class="ark-permalink">ARK <code>https://n2t.net/ark:86534/atp-g-000001</code> <button type="button" class="copy-id copy-icon-btn" data-copy="https://n2t.net/ark:86534/atp-g-000001" aria-label="Copy ARK permalink"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></p>
 
       <p class="first-para">This guide shows how to use three OpenSpeaks tools one after another. <a href="https://bento.toolforge.org">Bento</a> renames your source files. <a href="https://subtitler.toolforge.org">Subtitler</a> helps you write subtitles. <a href="https://tome.toolforge.org">Tome</a> describes the finished file and publishes it. All three run in a web browser and are free to use.</p>
+      <p>The examples come from recordings of Sarda-Sora, a variety of the Sora language spoken in Rayagada district, Odisha. Opino Gomango made them in September 2026. Its language code is <code>srb</code>.</p>
 
       <div class="appendix-excerpt">
-        <h4>The workflow at a glance</h4>
+        <h4 id="overview">Overview</h4>
         <p>Each tool does one job. Use them in this order:</p>
         <ol>
-          <li><strong>Keep the originals.</strong> Copy every file off the camera or phone before you change anything.</li>
-          <li><strong>Rename the source files in Bento.</strong> Every file gets a name that says what it is.</li>
-          <li><strong>Make smaller copies in Bento.</strong> Use these for sharing and subtitling.</li>
-          <li><strong>Write subtitles in Subtitler.</strong> Save the subtitle file with the same name as the video.</li>
-          <li><strong>Edit the film.</strong> See <a href="/manual/module-04/">Module 04</a>. The result is the produced file.</li>
-          <li><strong>Describe and publish in Tome.</strong> Tome writes the metadata, the agreements and the final file name.</li>
+          <li><a href="#keep-the-originals">Keep the originals</a>.</li>
+          <li><a href="#rename-source-files-in-bento">Rename source files in Bento</a>.</li>
+          <li><a href="#check-lengths-and-make-smaller-copies">Check lengths and make smaller copies</a>, also in Bento.</li>
+          <li><a href="#write-subtitles-in-subtitler">Write subtitles in Subtitler</a>.</li>
+          <li>Edit the film. See <a href="/manual/module-04/">Module 04</a>.</li>
+          <li><a href="#describe-and-publish-in-tome">Describe and publish in Tome</a>.</li>
         </ol>
-        <p>Source files are what came out of the camera. Produced files are edited and ready to publish. Bento and Subtitler work on source files. Tome works on produced files.</p>
+        <p>Source files are what came out of the camera or phone. Produced files are edited and ready to publish. Bento and Subtitler work on source files. Tome works on produced files.</p>
 
-        <h4>The worked example: Sarda-Sora, September 2026</h4>
-        <p>Let's take the example of a real project: a recording of Sarda-Sora by Opino Gomango in September 2026. Sarda-Sora is a variety of the Sora language spoken in Rayagada district, Odisha, India. Its ISO 639-3 code is <code>srb</code>, the code for Sora. The interviewed speakers are Ratnagar Sabaro, Ramchandra Sabaro, Injuram Sabaro and Horaboti Gomango.</p>
-        <p>Opino Gomango recorded them in three sets:</p>
-        <ul>
-          <li><strong>School:</strong> four videos with Ratnagar Sabaro, a school secretary.</li>
-          <li><strong>Book:</strong> one video with Ramchandra Sabaro, secretary of the Sompeng Matarbanum. Four videos with Injuram Sabaro, a retired teacher, about the books he wrote in Sora. There are also 34 photos of Injuram Sabaro with those books.</li>
-          <li><strong>Temple:</strong> three videos and eight photos at a temple. Horaboti Gomango speaks in two of the videos.</li>
-        </ul>
-        <p>The files came to us with the camera's own names, such as <code>IMG_8404.MOV</code> and <code>_DSC0088.JPG</code>. We then needed a spreadsheet to say which file was which. This guide uses these files to show each step. Near the end, we list what we had to fix.</p>
-
-        <h4>Before you start: keep the originals</h4>
+        <h4 id="keep-the-originals">Keep the originals</h4>
         <ol>
-          <li>Copy all files from the camera or phone to one folder per recording session.</li>
+          <li>Check the date and time on your camera or phone before you record. Each file takes its date from this clock.</li>
+          <li>After recording, copy all files to one folder for each recording session.</li>
           <li>Make a second copy on another drive or in cloud storage.</li>
-          <li>Don't rename, compress or edit these originals. Every tool below works on copies.</li>
-          <li>Download each file once. Repeated downloads leave copies such as <code>IMG_8404-002.MOV</code>.</li>
+          <li>Don't rename, compress or edit the originals. Every tool below works on copies.</li>
+          <li>Download or copy each file once. Repeated downloads leave extra copies, such as <code>IMG_0001-002.MOV</code>.</li>
         </ol>
-        <p>Check the date and time on your camera before you record. The date in each file comes from the camera clock. A wrong clock gives every file a wrong date.</p>
 
-        <h4>Step 1: rename source files in Bento</h4>
+        <h4 id="rename-source-files-in-bento">Rename source files in Bento</h4>
+        <p>Camera names such as <code>IMG_0001.MOV</code> don't say what a file is. Bento gives each file a name with five parts, joined by <code>_</code>:</p>
+        <p><code>language code_speaker's initials_date_category_number</code></p>
         <ol>
           <li>Open <a href="https://bento.toolforge.org">Bento</a> and go to the <strong>Organise</strong> tab.</li>
           <li>Choose <strong>Field recordings</strong>.</li>
@@ -87,45 +80,43 @@
           <li>Fill in the language code, the speaker's initials, the date and the category.</li>
           <li>Keep <strong>Add sequence number</strong> and <strong>Use lowercase file extension</strong> ticked.</li>
           <li>Click <strong>Generate Rename Plan</strong> and check every new name.</li>
-          <li>Click <strong>Export CSV</strong>. Keep this file with the recordings.</li>
+          <li>Click <strong>Export CSV</strong>. Keep this file with the recordings. It lists each old name, its new name, its type and its size.</li>
           <li>Click <strong>Rename &amp; Download ZIP</strong>.</li>
         </ol>
-        <p>A Bento name has five parts with <code>_</code> between them: language code, speaker's initials, date, category and number.</p>
-        <table class="rate-table">
-          <caption>Bento names for some of the Sarda-Sora files</caption>
-          <thead>
-            <tr><th scope="col">Camera name</th><th scope="col">Speaker</th><th scope="col">New name</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><code>IMG_8333.MOV</code></td><td>Ratnagar Sabaro</td><td><code>srb_RtS_20260910_interview_002.mov</code></td></tr>
-            <tr><td><code>IMG_8399.MOV</code></td><td>Ramchandra Sabaro</td><td><code>srb_RcS_20260910_interview_001.mov</code></td></tr>
-            <tr><td><code>IMG_8400.MOV</code></td><td>Injuram Sabaro</td><td><code>srb_IS_20260910_interview_001.mov</code></td></tr>
-            <tr><td><code>IMG_8405.HEIC</code></td><td>Injuram Sabaro</td><td><code>srb_IS_20260910_other_001.heic</code></td></tr>
-          </tbody>
-        </table>
-        <p>Ratnagar Sabaro and Ramchandra Sabaro have the same initials. We added a letter from each first name (<code>RtS</code> and <code>RcS</code>) so their files can't be mixed up.</p>
-        <p>Photos and videos go in separate batches, because each batch takes one category. Each batch starts its numbers at 001.</p>
-        <p>The CSV rename plan replaces a hand-made list. It holds each old name, its new name, its type and its size.</p>
+        <p>Put photos and videos in separate batches, because each batch takes one category. If two speakers have the same initials, add a letter from each first name.</p>
+        <div class="guide-example">
+          <p class="example-label">Example</p>
+          <p>Injuram Sabaro's interview video <code>IMG_8400.MOV</code> became <code>srb_IS_20260910_interview_001.mov</code>. A photo of him, <code>IMG_8405.HEIC</code>, became <code>srb_IS_20260910_other_001.heic</code>.</p>
+          <p>Ratnagar Sabaro and Ramchandra Sabaro both have the initials RS, so their files use <code>RtS</code> and <code>RcS</code>.</p>
+        </div>
 
-        <h4>Step 2: check lengths and make smaller copies</h4>
+        <h4 id="check-lengths-and-make-smaller-copies">Check lengths and make smaller copies</h4>
         <ol>
           <li>Bento passes the renamed files to the <strong>Duration</strong> and <strong>Compress</strong> tabs.</li>
           <li>In <strong>Duration</strong>, check the length of each recording. Export the list if you need it for a report or for payment.</li>
           <li>In <strong>Compress</strong>, make smaller MP4 copies of the videos for sharing and subtitling.</li>
         </ol>
-        <p>A compressed copy keeps the same name with a different extension: <code>srb_IS_20260910_interview_001.mp4</code>. Share the originals too. For the School recordings, only compressed copies were shared, so the source files weren't in the archive.</p>
+        <p>A smaller copy keeps the same name with a different extension. When you share files, share the originals as well as the copies. An archive needs the originals.</p>
+        <div class="guide-example">
+          <p class="example-label">Example</p>
+          <p><code>srb_IS_20260910_interview_001.mov</code> has the smaller copy <code>srb_IS_20260910_interview_001.mp4</code>.</p>
+        </div>
 
-        <h4>Step 3: write subtitles in Subtitler</h4>
+        <h4 id="write-subtitles-in-subtitler">Write subtitles in Subtitler</h4>
         <ol>
-          <li>Open <a href="https://subtitler.toolforge.org">Subtitler</a> and load the compressed copy.</li>
+          <li>Open <a href="https://subtitler.toolforge.org">Subtitler</a> and load the smaller copy.</li>
           <li>Choose the language of the subtitles.</li>
           <li>Write the subtitles. Follow the <a href="/manual/appendix-a/">Text Style Guide</a>: 3 to 7 seconds and up to 45 characters for each subtitle.</li>
           <li>Download the file as SRT.</li>
-          <li>Name it after the video, adding the language code: <code>srb_IS_20260910_interview_001.en.srt</code>.</li>
+          <li>Name it after the video, and add the code of the subtitle language before <code>.srt</code>.</li>
         </ol>
-        <p>Keep subtitle files in a <code>Subtitle</code> folder with the same subfolders as the videos. In the Sarda-Sora case these are <code>Subtitle/Book</code> and <code>Subtitle/School</code>.</p>
+        <p>Keep subtitle files in a <code>Subtitle</code> folder, with the same subfolders as the videos.</p>
+        <div class="guide-example">
+          <p class="example-label">Example</p>
+          <p>English subtitles for <code>srb_IS_20260910_interview_001.mp4</code> are saved as <code>srb_IS_20260910_interview_001.en.srt</code>.</p>
+        </div>
 
-        <h4>Step 4: describe and publish in Tome</h4>
+        <h4 id="describe-and-publish-in-tome">Describe and publish in Tome</h4>
         <p>Edit the film first, following <a href="/manual/module-04/">Module 04</a>. Then open <a href="https://tome.toolforge.org">Tome</a> with the produced file.</p>
         <ol>
           <li>Load the produced file, or its Wikimedia Commons page if it's already published.</li>
@@ -136,26 +127,29 @@
           <li>Save the record as a file. You can open it again later.</li>
           <li>If the community has agreed to it, publish to Wikidata and Wikimedia Commons from the last tab.</li>
         </ol>
-        <p>Tome gives the produced file a longer name, with full names and the topic. It uses hyphens between parts, for example: <code>srb-Sora-Opino Gomango-Injuram Sabaro-Writing books in Sora.webm</code>. Bento gives the same name in its <strong>Upload-ready</strong> mode.</p>
+        <p>Tome gives the produced file a longer name, with full names and the topic, joined by hyphens. Bento gives the same kind of name in its <strong>Upload-ready</strong> mode.</p>
+        <div class="guide-example">
+          <p class="example-label">Example</p>
+          <p>Opino Gomango's film of Injuram Sabaro, a retired teacher who wrote books in Sora, is named <code>srb-Sora-Opino Gomango-Injuram Sabaro-Writing books in Sora.webm</code>.</p>
+        </div>
 
-        <h4>What we fixed in the Sarda-Sora files</h4>
+        <h4 id="common-mistakes">Common mistakes</h4>
         <table class="rate-table">
-          <caption>Problems found and how to avoid them</caption>
+          <caption>Common mistakes and how to avoid them</caption>
           <thead>
-            <tr><th scope="col">What happened</th><th scope="col">How to avoid it</th></tr>
+            <tr><th scope="col">What goes wrong</th><th scope="col">How to avoid it</th></tr>
           </thead>
           <tbody>
-            <tr><td>Files arrived with camera names, and a spreadsheet was typed later to explain them.</td><td>Rename in Bento before sharing. Share the CSV rename plan.</td></tr>
-            <tr><td>The spreadsheet listed subtitle file names where the video names should be.</td><td>Use one row for each source file. Put the subtitle file in its own column.</td></tr>
-            <tr><td><code>IMG_8399.MOV</code> was left out of the spreadsheet.</td><td>Check the rename plan against the folder before sharing.</td></tr>
-            <tr><td>The School videos were shared only as compressed copies. <code>IMG_8336.MOV</code> wasn't shared at all.</td><td>Share the originals as well as the copies.</td></tr>
-            <tr><td>Repeated downloads left two copies of <code>IMG_8404.MOV</code>, a <code>book 2</code> folder and a ZIP file of the same photos.</td><td>Download once. Compare file sizes before keeping a second copy.</td></tr>
-            <tr><td>Folder names ended in a space, and photo extensions were mixed (<code>.HEIC</code> and <code>.heic</code>).</td><td>Bento uses lowercase extensions. Type folder names with no space at the end.</td></tr>
-            <tr><td>The files didn't name the speaker in the Temple videos. We had to ask who she was.</td><td>Write down each speaker's name, in their own spelling, when you record.</td></tr>
+            <tr><td>Files are shared with camera names, and a list explaining them is typed later.</td><td>Rename in Bento before sharing. Share the CSV rename plan.</td></tr>
+            <tr><td>A file is left out of the list.</td><td>Check the rename plan against the folder before sharing.</td></tr>
+            <tr><td>Only the smaller copies are shared.</td><td>Share the originals as well as the copies.</td></tr>
+            <tr><td>Repeated downloads leave duplicate files, folders and ZIP files.</td><td>Download once. Compare file sizes before keeping a second copy.</td></tr>
+            <tr><td>Folder names end in a space, and extensions are mixed (<code>.HEIC</code> and <code>.heic</code>).</td><td>Type folder names with no space at the end. Bento uses lowercase extensions.</td></tr>
+            <tr><td>Nobody wrote down who speaks in a recording.</td><td>Write down each speaker's name, in their own spelling, when you record.</td></tr>
           </tbody>
         </table>
 
-        <h4>Credits</h4>
+        <h4 id="credits">Credits</h4>
         <p>Opino Gomango recorded the Sarda-Sora files in September 2026. Ratnagar Sabaro, Ramchandra Sabaro, Injuram Sabaro and Horaboti Gomango spoke in them.</p>
       </div>
 
